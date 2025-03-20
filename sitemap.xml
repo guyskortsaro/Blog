@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://guyskortsaro.github.io/Blog/index.html</loc>
+         <loc>https://guyskortsaro.github.io/Blog/</loc>
          <lastmod>2025-03-20</lastmod>
     </url>
     <url>
-         <loc>https://guyskortsaro.github.io/Blog/3dof-gimbal/electronics.html</loc>
+         <loc>https://guyskortsaro.github.io/Blog/3dof-gimbal/electronics/</loc>
          <lastmod>2025-03-20</lastmod>
     </url>
     <url>
-         <loc>https://guyskortsaro.github.io/Blog/3dof-gimbal/firmware.html</loc>
+         <loc>https://guyskortsaro.github.io/Blog/3dof-gimbal/firmware/</loc>
          <lastmod>2025-03-20</lastmod>
     </url>
     <url>
-         <loc>https://guyskortsaro.github.io/Blog/3dof-gimbal/mechanical-design.html</loc>
+         <loc>https://guyskortsaro.github.io/Blog/3dof-gimbal/mechanical-design/</loc>
          <lastmod>2025-03-20</lastmod>
     </url>
     <url>
-         <loc>https://guyskortsaro.github.io/Blog/3dof-gimbal/overview.html</loc>
+         <loc>https://guyskortsaro.github.io/Blog/3dof-gimbal/overview/</loc>
          <lastmod>2025-03-20</lastmod>
     </url>
     <url>
-         <loc>https://guyskortsaro.github.io/Blog/3dof-gimbal/referances.html</loc>
+         <loc>https://guyskortsaro.github.io/Blog/3dof-gimbal/referances/</loc>
          <lastmod>2025-03-20</lastmod>
     </url>
 </urlset>
