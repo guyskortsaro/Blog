@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://guyskortsaro.github.io/Blog/</loc>
+         <loc>https://guyskortsaro.github.io/</loc>
          <lastmod>2025-03-20</lastmod>
     </url>
     <url>
-         <loc>https://guyskortsaro.github.io/Blog/3dof-gimbal/electronics/</loc>
+         <loc>https://guyskortsaro.github.io/Electronics/</loc>
          <lastmod>2025-03-20</lastmod>
     </url>
     <url>
-         <loc>https://guyskortsaro.github.io/Blog/3dof-gimbal/firmware/</loc>
+         <loc>https://guyskortsaro.github.io/Firmware/</loc>
          <lastmod>2025-03-20</lastmod>
     </url>
     <url>
-         <loc>https://guyskortsaro.github.io/Blog/3dof-gimbal/mechanical-design/</loc>
+         <loc>https://guyskortsaro.github.io/Mechanical_Design/</loc>
          <lastmod>2025-03-20</lastmod>
     </url>
     <url>
-         <loc>https://guyskortsaro.github.io/Blog/3dof-gimbal/overview/</loc>
+         <loc>https://guyskortsaro.github.io/Overview/</loc>
          <lastmod>2025-03-20</lastmod>
     </url>
     <url>
-         <loc>https://guyskortsaro.github.io/Blog/3dof-gimbal/referances/</loc>
+         <loc>https://guyskortsaro.github.io/Referances/</loc>
          <lastmod>2025-03-20</lastmod>
     </url>
 </urlset>
