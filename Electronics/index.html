@@ -423,6 +423,18 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Electronics
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -433,6 +445,79 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arduino-uno-pin-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arduino UNO pin set:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arduino-uno-pins-connection-only-1-motor-is-possible" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arduino UNO pins connection (only 1 motor is possible)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#as5408a-magnetic-encoder-to-arduino-uno-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      AS5408A Magnetic Encoder to Arduino UNO connection:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arduino-mega-2560-pin-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arduino MEGA 2560 pin set:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arduino-mega-pins-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arduino MEGA pins planning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arduino-nano33ble-pin-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arduino nano33BLE pin set:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -500,6 +585,68 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arduino-uno-pin-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arduino UNO pin set:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arduino-uno-pins-connection-only-1-motor-is-possible" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arduino UNO pins connection (only 1 motor is possible)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#as5408a-magnetic-encoder-to-arduino-uno-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      AS5408A Magnetic Encoder to Arduino UNO connection:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arduino-mega-2560-pin-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arduino MEGA 2560 pin set:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arduino-mega-pins-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arduino MEGA pins planning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arduino-nano33ble-pin-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arduino nano33BLE pin set:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -518,6 +665,446 @@
 
 
 <h1 id="electronics">Electronics</h1>
+<h2 id="arduino-uno-pin-set">Arduino UNO pin set:</h2>
+<p><img src="images/arduino_uno_pinset.png" alt="Arduino uno pinset" width="400"></p>
+<h2 id="arduino-uno-pins-connection-only-1-motor-is-possible">Arduino UNO pins connection (only 1 motor is possible)</h2>
+<table>
+<thead>
+<tr>
+<th>Sensor / Actuactor</th>
+<th>Pin</th>
+<th>Description</th>
+<th>Arduino MEGA 2560 pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AS5408A (Magnetic Encoders)</td>
+<td>red</td>
+<td>CLK</td>
+<td>D13 (PWM)</td>
+</tr>
+<tr>
+<td>AS5408A  (Magnetic Encoders)</td>
+<td>yellow</td>
+<td>MISO</td>
+<td>D12 (PWM)</td>
+</tr>
+<tr>
+<td>AS5408A  (Magnetic Encoders)</td>
+<td>black</td>
+<td>MOSI</td>
+<td>D11 (PWM)</td>
+</tr>
+<tr>
+<td>AS5408A  (Magnetic Encoders)</td>
+<td>white</td>
+<td>CSN/SS</td>
+<td>D10 (PWM)</td>
+</tr>
+<tr>
+<td>AS5408A  (Magnetic Encoders)</td>
+<td>green</td>
+<td>5V</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>AS5408A  (Magnetic Encoders)</td>
+<td>purple</td>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>EN</td>
+<td>Enable bit</td>
+<td>D2 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>IN1</td>
+<td>Motor Phase 1</td>
+<td>D3 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>IN2</td>
+<td>Motor Phase 2</td>
+<td>D5 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>IN3</td>
+<td>Motor Phase 3</td>
+<td>D6 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>GND</td>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MPU6050</td>
+<td>SDA</td>
+<td>SDA</td>
+<td>SDA</td>
+</tr>
+<tr>
+<td>MPU6050</td>
+<td>SCL</td>
+<td>SCL</td>
+<td>SCL</td>
+</tr>
+<tr>
+<td>MPU6050</td>
+<td>Vcc</td>
+<td>Vcc</td>
+<td>3V3</td>
+</tr>
+<tr>
+<td>MPU6050</td>
+<td>GND</td>
+<td>GND</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+<h2 id="as5408a-magnetic-encoder-to-arduino-uno-connection">AS5408A Magnetic Encoder to Arduino UNO connection:</h2>
+<details><summary>Keep in mind that this is an mirror image to the encoder connection side</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>
+</code></pre></div></td></tr></table></div>
+</details>
+
+<table>
+<thead>
+<tr>
+<th>AS5408A pin</th>
+<th>Description</th>
+<th>Arduino UNO pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>green</td>
+<td>5v</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>purple</td>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>white</td>
+<td>CSN</td>
+<td>D10</td>
+</tr>
+<tr>
+<td>black</td>
+<td>MOSI</td>
+<td>D11</td>
+</tr>
+<tr>
+<td>yellow</td>
+<td>MISO</td>
+<td>D12</td>
+</tr>
+<tr>
+<td>red</td>
+<td>CLK</td>
+<td>D13</td>
+</tr>
+</tbody>
+</table>
+<h2 id="arduino-mega-2560-pin-set">Arduino MEGA 2560 pin set:</h2>
+<p><img src="images/arduino_mega_pinset.png" alt="Arduino mega pinset" width="1000"></p>
+<p><a href="https://devboards.info/boards/arduino-mega2560-rev3">Arduino MEGA 2560 detailed specs</a></p>
+<h2 id="arduino-mega-pins-planning">Arduino MEGA pins planning</h2>
+<table>
+<thead>
+<tr>
+<th>Sensor / Actuactor</th>
+<th>Pin</th>
+<th>Description</th>
+<th>Arduino MEGA 2560 pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AS5408A (Magnetic Encoders)</td>
+<td>red</td>
+<td>CLK</td>
+<td>D13 (PWM)</td>
+</tr>
+<tr>
+<td>AS5408A  (Magnetic Encoders)</td>
+<td>yellow</td>
+<td>MISO</td>
+<td>D12 (PWM)</td>
+</tr>
+<tr>
+<td>AS5408A  (Magnetic Encoders)</td>
+<td>black</td>
+<td>MOSI</td>
+<td>D11 (PWM)</td>
+</tr>
+<tr>
+<td>AS5408A  (Magnetic Encoders)</td>
+<td>white</td>
+<td>CSN/SS</td>
+<td>D10 (PWM)</td>
+</tr>
+<tr>
+<td>AS5408A  (Magnetic Encoders)</td>
+<td>green</td>
+<td>5V</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>AS5408A  (Magnetic Encoders)</td>
+<td>purple</td>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>IN1</td>
+<td>Motor Phase 1</td>
+<td>D2 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>IN2</td>
+<td>Motor Phase 2</td>
+<td>D1 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>IN3</td>
+<td>Motor Phase 3</td>
+<td>D0 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>GND</td>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>EN</td>
+<td>Enable bit</td>
+<td>D22 (Digital I/O)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 2)</td>
+<td>IN1</td>
+<td>Motor Phase 1</td>
+<td>D5 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 2)</td>
+<td>IN2</td>
+<td>Motor Phase 2</td>
+<td>D4 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 2)</td>
+<td>IN3</td>
+<td>Motor Phase 3</td>
+<td>D3 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>GND</td>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 2)</td>
+<td>EN</td>
+<td>Enable bit</td>
+<td>D24 (Digital I/O)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 3)</td>
+<td>IN1</td>
+<td>Motor Phase 1</td>
+<td>D8 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 3)</td>
+<td>IN2</td>
+<td>Motor Phase 2</td>
+<td>D7 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 3)</td>
+<td>IN3</td>
+<td>Motor Phase 3</td>
+<td>D6 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 3)</td>
+<td>GND</td>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 3)</td>
+<td>EN</td>
+<td>Enable bit</td>
+<td>D26 (Digital I/O)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MPU6050</td>
+<td>SDA</td>
+<td>SDA</td>
+<td>D20 (SDA)</td>
+</tr>
+<tr>
+<td>MPU6050</td>
+<td>SCL</td>
+<td>SCL</td>
+<td>D21 (SCL)</td>
+</tr>
+<tr>
+<td>MPU6050</td>
+<td>Vcc</td>
+<td>Vcc</td>
+<td>3V3</td>
+</tr>
+<tr>
+<td>MPU6050</td>
+<td>GND</td>
+<td>GND</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+<h2 id="arduino-nano33ble-pin-set">Arduino nano33BLE pin set:</h2>
+<p><img src="images/arduino_nano33ble_pinset.png" alt="Arduino nano33ble pinset" width="1000"></p>
+<table>
+<thead>
+<tr>
+<th>Sensor / Actuactor</th>
+<th>Pin</th>
+<th>Description</th>
+<th>Arduino MEGA 2560 pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>IN1</td>
+<td>Motor Phase 1</td>
+<td>D4 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>IN2</td>
+<td>Motor Phase 2</td>
+<td>D3 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>IN3</td>
+<td>Motor Phase 3</td>
+<td>D2 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>GND</td>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>EN</td>
+<td>Enable bit</td>
+<td>D5</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>IN1</td>
+<td>Motor Phase 1</td>
+<td>D8 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>IN2</td>
+<td>Motor Phase 2</td>
+<td>D7 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>IN3</td>
+<td>Motor Phase 3</td>
+<td>D6 (PWM)</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>GND</td>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>SimpleFOC mini driver (Motor 1)</td>
+<td>EN</td>
+<td>Enable bit</td>
+<td>D9</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 
 
