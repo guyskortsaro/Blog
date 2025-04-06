@@ -381,7 +381,7 @@
   
 
 
-<h1 id="mpu6050-related-code">MPU6050 related code</h1>
+<div><h1 id="mpu6050-related-code">MPU6050 related code</h1>
 <h2 id="1-mpu6050-pitch-and-roll-angles-config-and-read">1. MPU6050 pitch and roll angles config and read</h2>
 <h3 id="notice-this-code-is-limited-to-lower-plane-90-90-degrees-only-due-to-arctan-function">notice this code is limited to lower plane (-90 -&gt; 90) degrees only (due to arctan function)</h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">  1</a></span>
@@ -568,9 +568,9 @@
 <a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="w">  </span><span class="n">pitch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gyroAngleY</span><span class="p">;</span>
 <a id="__codelineno-0-72" name="__codelineno-0-72"></a>
 <a id="__codelineno-0-73" name="__codelineno-0-73"></a><span class="w">  </span><span class="c1">// === Output ===</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Roll: &quot;</span><span class="p">);</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Roll: "</span><span class="p">);</span>
 <a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">roll</span><span class="p">);</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; | Pitch: &quot;</span><span class="p">);</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">" | Pitch: "</span><span class="p">);</span>
 <a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">pitch</span><span class="p">);</span>
 <a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="p">}</span>
 <a id="__codelineno-0-79" name="__codelineno-0-79"></a>
@@ -578,7 +578,7 @@
 <a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <a id="__codelineno-0-82" name="__codelineno-0-82"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">sumGyroX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">sumGyroY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">sumGyroZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <a id="__codelineno-0-83" name="__codelineno-0-83"></a>
-<a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Calibrating Gyroscope... Keep the sensor flat and still&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Calibrating Gyroscope... Keep the sensor flat and still"</span><span class="p">);</span>
 <a id="__codelineno-0-85" name="__codelineno-0-85"></a>
 <a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">200</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="w">    </span><span class="n">Wire</span><span class="p">.</span><span class="n">beginTransmission</span><span class="p">(</span><span class="n">MPU</span><span class="p">);</span>
@@ -602,12 +602,12 @@
 <a id="__codelineno-0-105" name="__codelineno-0-105"></a><span class="w">  </span><span class="n">GyroErrorY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sumGyroY</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">200.0</span><span class="p">;</span>
 <a id="__codelineno-0-106" name="__codelineno-0-106"></a><span class="w">  </span><span class="n">GyroErrorZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sumGyroZ</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">200.0</span><span class="p">;</span>
 <a id="__codelineno-0-107" name="__codelineno-0-107"></a>
-<a id="__codelineno-0-108" name="__codelineno-0-108"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Gyro Calibration Done&quot;</span><span class="p">);</span>
-<a id="__codelineno-0-109" name="__codelineno-0-109"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;GyroErrorX: &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">GyroErrorX</span><span class="p">);</span>
-<a id="__codelineno-0-110" name="__codelineno-0-110"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;GyroErrorY: &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">GyroErrorY</span><span class="p">);</span>
-<a id="__codelineno-0-111" name="__codelineno-0-111"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;GyroErrorZ: &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">GyroErrorZ</span><span class="p">);</span>
+<a id="__codelineno-0-108" name="__codelineno-0-108"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Gyro Calibration Done"</span><span class="p">);</span>
+<a id="__codelineno-0-109" name="__codelineno-0-109"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"GyroErrorX: "</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">GyroErrorX</span><span class="p">);</span>
+<a id="__codelineno-0-110" name="__codelineno-0-110"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"GyroErrorY: "</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">GyroErrorY</span><span class="p">);</span>
+<a id="__codelineno-0-111" name="__codelineno-0-111"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"GyroErrorZ: "</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">GyroErrorZ</span><span class="p">);</span>
 <a id="__codelineno-0-112" name="__codelineno-0-112"></a><span class="p">}</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></table></div></div>
 
 
 
