@@ -12,7 +12,7 @@
         <meta name="author" content="guy Skortsaro">
       
       
-        <link rel="canonical" href="https://guyskortsaro.github.io/2_dof_gimbal/Firmware/combined/">
+        <link rel="canonical" href="https://guyskortsaro.github.io/2_dof_gimbal/Firmware/motor%2Bmpu6050%2Bencoder/">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>under construction - Guy's Blog</title>
+        <title>Single motor attempt (integrated system) - Guy's Blog</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#under-construction" class="md-skip">
+        <a href="#single-motor-attempt-integrated-system" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              under construction
+              Single motor attempt (integrated system)
             
           </span>
         </div>
@@ -339,6 +339,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#this-system-includes-the-following-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      this system includes the following hardware:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mpu6050-roll-reading-and-motor-moving-based-on-these-readings-using-low-pass-filter" class="md-nav__link">
     <span class="md-ellipsis">
       MPU6050 roll reading and motor moving based on these readings (using low-pass filter)
@@ -366,7 +375,34 @@
   
 
 
-<div><h1 id="under-construction">under construction</h1>
+<div><h1 id="single-motor-attempt-integrated-system">Single motor attempt (integrated system)</h1>
+<h2 id="this-system-includes-the-following-hardware">this system includes the following hardware:</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brushless motor</td>
+<td>GM3506</td>
+</tr>
+<tr>
+<td>Driver</td>
+<td>SimpleFOC mini v1.0</td>
+</tr>
+<tr>
+<td>IMU</td>
+<td>MPU6050</td>
+</tr>
+<tr>
+<td>Microcontroller</td>
+<td>Arduino UNO</td>
+</tr>
+</tbody>
+</table>
 <h2 id="mpu6050-roll-reading-and-motor-moving-based-on-these-readings-using-low-pass-filter">MPU6050 roll reading and motor moving based on these readings (using low-pass filter)</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>

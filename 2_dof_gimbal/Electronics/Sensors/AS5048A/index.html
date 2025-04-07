@@ -332,6 +332,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#as5408a-magnetic-encoder-to-arduino-uno-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      AS5408A Magnetic Encoder to Arduino UNO connection:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -351,7 +368,52 @@
 
 <div><h1 id="as5048a">AS5048A</h1>
 <p>The AS5048A is a high-resolution 14-bit rotary position sensor based on magnetic Hall effect technology. Hall effect sensors measure magnetic fields to determine position, speed, or rotation, and are commonly used in contactless sensing applications. The AS5048A is designed for precise angular position measurements of a rotating magnet, making it well-suited for motor control, robotics, and industrial automation systems. It supports both SPI and PWM interfaces, allowing flexible integration with a variety of microcontrollers. Its non-contact nature ensures durability and longevity, even in harsh environments. For a complete overview of the sensor’s capabilities and electrical characteristics, please refer to the attached datasheet.</p>
-<p><a href="files/AS5048Adatasheet.pdf">MPU6050 Datasheet link</a></p></div>
+<p><a href="files/AS5048Adatasheet.pdf">MPU6050 Datasheet link</a></p>
+<h2 id="as5408a-magnetic-encoder-to-arduino-uno-connection">AS5408A Magnetic Encoder to Arduino UNO connection:</h2>
+<ul>
+<li>Keep in mind that this is a "mirror image" to the encoder connection side</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>AS5408A pin</th>
+<th>Description</th>
+<th>Arduino UNO pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>green</td>
+<td>5v</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>purple</td>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>white</td>
+<td>CSN</td>
+<td>D10</td>
+</tr>
+<tr>
+<td>black</td>
+<td>MOSI</td>
+<td>D11</td>
+</tr>
+<tr>
+<td>yellow</td>
+<td>MISO</td>
+<td>D12</td>
+</tr>
+<tr>
+<td>red</td>
+<td>CLK</td>
+<td>D13</td>
+</tr>
+</tbody>
+</table></div>
 
 
 
