@@ -23,6 +23,6 @@
 
 .grid-item img {
     max-width: 100%;
-    height: auto;
+    height: 180px;
     border-radius: 5px;
 }
