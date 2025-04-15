@@ -30,3 +30,10 @@
     margin: 0 auto 10px;
   }
   
+  .grid-item p {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #2c2c2c; /* Optional: darken the text slightly */
+    letter-spacing: 0.5px;
+  }
