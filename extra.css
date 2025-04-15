@@ -22,7 +22,11 @@
 }
 
 .grid-item img {
-    max-width: 100%;
-    height: 180px;
-    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;   /* You can tweak this size */
+    height: 180px;       /* Adjust for landscape proportions */
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
 }
