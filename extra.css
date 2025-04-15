@@ -23,10 +23,10 @@
 
 .grid-item img {
     width: 100%;
-    max-width: 300px;   /* You can tweak this size */
-    height: 180px;       /* Adjust for landscape proportions */
+    aspect-ratio: 3 / 2;          
     object-fit: cover;
     border-radius: 10px;
     display: block;
-    margin: 0 auto;
-}
+    margin: 0 auto 10px;
+  }
+  
