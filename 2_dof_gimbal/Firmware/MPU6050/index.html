@@ -22,7 +22,7 @@
     
     
       
-        <title>MPU6050 related code - Guy's Blog</title>
+        <title>MPU6050 IMU - Guy's Blog</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mpu6050-related-code" class="md-skip">
+        <a href="#mpu6050-imu" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MPU6050 related code
+              MPU6050 IMU
             
           </span>
         </div>
@@ -345,21 +345,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. MPU6050 pitch and roll angles config and read">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#notice-this-code-is-limited-to-lower-plane-90-90-degrees-only-due-to-arctan-function" class="md-nav__link">
-    <span class="md-ellipsis">
-      notice this code is limited to lower plane (-90 -&gt; 90) degrees only (due to arctan function)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -381,9 +366,9 @@
   
 
 
-<div><h1 id="mpu6050-related-code">MPU6050 related code</h1>
+<div><h1 id="mpu6050-imu">MPU6050 IMU</h1>
+<p>To approach the gyro project with greater confidence and reliability, it was essential to first gain hands-on experience with the MPU6050 sensor. This involved learning how to read raw accelerometer and gyroscope data, understanding sensor orientation, and implementing basic filtering techniques to extract stable pitch and roll angles. Mastering these fundamentals helped ensure that the sensor readings used for control logic would be accurate, consistent, and well-suited for integration into the gimbal system.</p>
 <h2 id="1-mpu6050-pitch-and-roll-angles-config-and-read">1. MPU6050 pitch and roll angles config and read</h2>
-<h3 id="notice-this-code-is-limited-to-lower-plane-90-90-degrees-only-due-to-arctan-function">notice this code is limited to lower plane (-90 -&gt; 90) degrees only (due to arctan function)</h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">  1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">  2</a></span>
 <span class="normal"><a href="#__codelineno-0-3">  3</a></span>
@@ -485,8 +470,7 @@
 <span class="normal"><a href="#__codelineno-0-99"> 99</a></span>
 <span class="normal"><a href="#__codelineno-0-100">100</a></span>
 <span class="normal"><a href="#__codelineno-0-101">101</a></span>
-<span class="normal"><a href="#__codelineno-0-102">102</a></span>
-<span class="normal"><a href="#__codelineno-0-103">103</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Arduino.h&gt;</span>
+<span class="normal"><a href="#__codelineno-0-102">102</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Arduino.h&gt;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SimpleFOC.h&gt;</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span>
@@ -495,7 +479,7 @@
 <a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="n">MPU6050</span><span class="w"> </span><span class="n">mpu</span><span class="p">;</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8"></a>
 <a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="c1">// Complementary filter constant</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.96</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.96</span><span class="p">;</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11"></a>
 <a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="c1">// Filtered angles</span>
 <a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="kt">float</span><span class="w"> </span><span class="n">pitch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
@@ -565,12 +549,12 @@
 <a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">denom</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">denom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0001</span><span class="p">;</span>
 <a id="__codelineno-0-78" name="__codelineno-0-78"></a>
 <a id="__codelineno-0-79" name="__codelineno-0-79"></a><span class="w">    </span><span class="c1">// Accel-derived angles (in degrees)</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">accelPitch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atan2</span><span class="p">(</span><span class="n">ayf</span><span class="p">,</span><span class="w"> </span><span class="n">denom</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">RAD_TO_DEG</span><span class="p">;</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">accelRoll</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">atan2</span><span class="p">(</span><span class="o">-</span><span class="n">axf</span><span class="p">,</span><span class="w"> </span><span class="n">azf</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">RAD_TO_DEG</span><span class="p">;</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">accelPitch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atan2</span><span class="p">(</span><span class="n">ayf</span><span class="p">,</span><span class="w"> </span><span class="n">denom</span><span class="p">);</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">accelRoll</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">atan2</span><span class="p">(</span><span class="o">-</span><span class="n">axf</span><span class="p">,</span><span class="w"> </span><span class="n">azf</span><span class="p">);</span>
 <a id="__codelineno-0-82" name="__codelineno-0-82"></a>
 <a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="w">    </span><span class="c1">// Apply gyro bias correction and scale to deg/s</span>
-<a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">gyroPitchRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">gy</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">gyroBiasY</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">131.0</span><span class="p">;</span>
-<a id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">gyroRollRate</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">gx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">gyroBiasX</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">131.0</span><span class="p">;</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">gyroPitchRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">gy</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">gyroBiasY</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">131.0</span><span class="w"> </span><span class="o">*</span><span class="n">DEG_TO_RAD</span><span class="p">;</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">gyroRollRate</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">gx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">gyroBiasX</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">131.0</span><span class="w"> </span><span class="o">*</span><span class="n">DEG_TO_RAD</span><span class="p">;</span>
 <a id="__codelineno-0-86" name="__codelineno-0-86"></a>
 <a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="w">    </span><span class="c1">// Complementary filter</span>
 <a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="w">    </span><span class="n">pitch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">pitch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">gyroPitchRate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dt</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">alpha</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">accelPitch</span><span class="p">;</span>
@@ -579,16 +563,15 @@
 <a id="__codelineno-0-91" name="__codelineno-0-91"></a><span class="w">    </span><span class="c1">// Output results</span>
 <a id="__codelineno-0-92" name="__codelineno-0-92"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Pitch: "</span><span class="p">);</span>
 <a id="__codelineno-0-93" name="__codelineno-0-93"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">pitch</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
-<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"°</span><span class="se">\t</span><span class="s">Roll: "</span><span class="p">);</span>
+<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">" Rad</span><span class="se">\t</span><span class="s">Roll: "</span><span class="p">);</span>
 <a id="__codelineno-0-95" name="__codelineno-0-95"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">roll</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
-<a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"°</span><span class="se">\t</span><span class="s">Pitch Rate: "</span><span class="p">);</span>
+<a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">" Rad</span><span class="se">\t</span><span class="s">Pitch Rate: "</span><span class="p">);</span>
 <a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">gyroPitchRate</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
-<a id="__codelineno-0-98" name="__codelineno-0-98"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">" °/s</span><span class="se">\t</span><span class="s">Roll Rate: "</span><span class="p">);</span>
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">" Rad/s</span><span class="se">\t</span><span class="s">Roll Rate: "</span><span class="p">);</span>
 <a id="__codelineno-0-99" name="__codelineno-0-99"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">gyroRollRate</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
-<a id="__codelineno-0-100" name="__codelineno-0-100"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">" °/s"</span><span class="p">);</span>
-<a id="__codelineno-0-101" name="__codelineno-0-101"></a>
-<a id="__codelineno-0-102" name="__codelineno-0-102"></a><span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"> </span><span class="c1">// Optional: 10Hz output</span>
-<a id="__codelineno-0-103" name="__codelineno-0-103"></a><span class="p">}</span>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">" Rad/s"</span><span class="p">);</span>
+<a id="__codelineno-0-101" name="__codelineno-0-101"></a><span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"> </span><span class="c1">// Optional: 10Hz output</span>
+<a id="__codelineno-0-102" name="__codelineno-0-102"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div></div>
 
 
