@@ -341,6 +341,98 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#calculating-pitch-and-roll-from-mpu6050-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Calculating Pitch and Roll from MPU6050 Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Calculating Pitch and Roll from MPU6050 Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-using-accelerometer-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Using Accelerometer Only
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-using-gyroscope-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Using Gyroscope Only
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sensor-fusion-with-complementary-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Sensor Fusion with Complementary Filter
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reducing-measurement-overshoot-with-a-low-pass-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reducing Measurement Overshoot with a Low-Pass Filter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reducing Measurement Overshoot with a Low-Pass Filter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-purpose-of-a-low-pass-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Purpose of a Low-Pass Filter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-filter-equation-exponential-smoothing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Filter Equation (Exponential Smoothing)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-choosing-the-filter-coefficient-alpha" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Choosing the Filter Coefficient \( \alpha \)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -360,7 +452,60 @@
 
 <div><h1 id="mpu6050">MPU6050</h1>
 <p>The MPU6050 is a widely used 6-axis Inertial Measurement Unit (IMU) that integrates a 3-axis gyroscope and a 3-axis accelerometer into a single chip. IMUs are sensors that measure linear acceleration and angular velocity, providing essential data for applications such as motion tracking, orientation sensing, and control systems. The MPU6050 combines motion sensing capabilities with an onboard Digital Motion Processor (DMP), allowing it to process complex motion algorithms internally and offload computation from the main microcontroller. Its compact form factor, I²C interface, and real-time motion data output make it a popular choice for embedded systems, robotics, and consumer electronics. For detailed specifications, please refer to the attached datasheet.</p>
-<p><a href="files/mpu6050datasheet.pdf">MPU6050 Datasheet link</a></p></div>
+<p><a href="files/mpu6050datasheet.pdf">MPU6050 Datasheet link</a></p>
+<h2 id="calculating-pitch-and-roll-from-mpu6050-data">Calculating Pitch and Roll from MPU6050 Data</h2>
+<p>The MPU6050 provides <strong>accelerometer</strong> and <strong>gyroscope</strong> data, which can be used to estimate the orientation of a device in space. Specifically, we calculate the <strong>pitch</strong> and <strong>roll</strong> angles. Here's how each is derived:</p>
+<h3 id="1-using-accelerometer-only">1. Using Accelerometer Only</h3>
+<p>The accelerometer provides information about the direction of gravity. From this, we can estimate pitch and roll:</p>
+<div class="arithmatex">\[
+\text{roll} = \arctan\left(\frac{a_y}{a_z}\right)
+\]</div>
+<div class="arithmatex">\[
+\text{pitch} = \arctan\left(\frac{-a_x}{\sqrt{a_y^2 + a_z^2}}\right)
+\]</div>
+<ul>
+<li><span class="arithmatex">\( a_x, a_y, a_z \)</span> are the accelerometer readings along the X, Y, and Z axes.</li>
+<li>These estimates are stable but noisy and sensitive to linear acceleration.</li>
+</ul>
+<h3 id="2-using-gyroscope-only">2. Using Gyroscope Only</h3>
+<p>The gyroscope provides angular velocity in rad/s or deg/s around each axis. To estimate the angle over time:</p>
+<div class="arithmatex">\[
+\theta(t) = \theta(t - \Delta t) + \omega \cdot \Delta t
+\]</div>
+<p>Where:
+- <span class="arithmatex">\( \theta(t) \)</span> is the current angle (pitch or roll),
+- <span class="arithmatex">\( \omega \)</span> is the angular rate from the gyroscope,
+- <span class="arithmatex">\( \Delta t \)</span> is the time interval between readings.</p>
+<p>This method provides smooth results but suffers from <strong>drift over time</strong>.</p>
+<h3 id="3-sensor-fusion-with-complementary-filter">3. Sensor Fusion with Complementary Filter</h3>
+<p>To combine the advantages of both sensors, a <strong>complementary filter</strong> is used:</p>
+<div class="arithmatex">\[
+\text{angle} = \alpha \cdot (\text{angle} + \omega \cdot \Delta t) + (1 - \alpha) \cdot \text{accelAngle}
+\]</div>
+<p>Where:
+- <span class="arithmatex">\( \alpha \)</span> is a tuning constant between 0 and 1 (e.g., 0.96),
+- <span class="arithmatex">\( \omega \cdot \Delta t \)</span> is the integrated gyroscope angle,
+- <span class="arithmatex">\( \text{accelAngle} \)</span> is the angle derived from the accelerometer.</p>
+<p>This approach balances <strong>smoothness</strong> (from gyro) and <strong>long-term accuracy</strong> (from accelerometer), resulting in a reliable and efficient orientation estimation method.</p>
+<h2 id="reducing-measurement-overshoot-with-a-low-pass-filter">Reducing Measurement Overshoot with a Low-Pass Filter</h2>
+<p>When working with sensor data such as angular rates or accelerometer outputs from the MPU6050, it's common to experience <strong>noise and overshoot</strong>, especially during rapid motion. To address this, we can apply a <strong>low-pass filter (LPF)</strong> to smooth out sudden spikes and stabilize the output.</p>
+<h3 id="1-purpose-of-a-low-pass-filter">1. Purpose of a Low-Pass Filter</h3>
+<p>A <strong>low-pass filter</strong> allows <strong>low-frequency (slow-changing)</strong> signals to pass through while attenuating <strong>high-frequency (fast-changing)</strong> noise. This helps reduce overshoot and jitter in angle calculations or rate measurements.</p>
+<h3 id="2-filter-equation-exponential-smoothing">2. Filter Equation (Exponential Smoothing)</h3>
+<p>The most common and simple form of LPF used in embedded systems is the <strong>exponential moving average</strong>, calculated as:</p>
+<div class="arithmatex">\[
+y_t = \alpha \cdot y_{t-1} + (1 - \alpha) \cdot x_t
+\]</div>
+<p>Where:
+- <span class="arithmatex">\( y_t \)</span> is the <strong>filtered output</strong> at time <span class="arithmatex">\( t \)</span>,
+- <span class="arithmatex">\( y_{t-1} \)</span> is the <strong>previous output</strong>,
+- <span class="arithmatex">\( x_t \)</span> is the <strong>current raw input</strong> (e.g., gyro reading),
+- <span class="arithmatex">\( \alpha \)</span> is the <strong>filter coefficient</strong> between 0 and 1.</p>
+<h3 id="3-choosing-the-filter-coefficient-alpha">3. Choosing the Filter Coefficient <span class="arithmatex">\( \alpha \)</span></h3>
+<ul>
+<li>A <strong>higher <span class="arithmatex">\( \alpha \)</span></strong> (e.g., 0.95) results in <strong>smoother output</strong>, but reacts slowly to changes.</li>
+<li>A <strong>lower <span class="arithmatex">\( \alpha \)</span></strong> (e.g., 0.7) makes the filter more responsive, but lets more noise through.</li>
+</ul></div>
 
 
 
