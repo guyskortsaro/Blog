@@ -23,6 +23,11 @@ An in-depth engineering project exploring the development and stabilization of a
         <img src="images/firmware.png">
         <p>Firmware</p></a>
      </div>
+         <div class="grid-item">
+        <a href="Communication">
+        <img src="images/communication.png">
+        <p>Communication</p></a>
+     </div>
         <div class="grid-item">
         <a href="Simulation">
         <img src="images/Simulation.png">
