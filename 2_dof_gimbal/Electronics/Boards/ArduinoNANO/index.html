@@ -12,7 +12,7 @@
         <meta name="author" content="guy Skortsaro">
       
       
-        <link rel="canonical" href="https://guyskortsaro.github.io/2_dof_gimbal/Electronics/Boards/ArduinoMEGA2560/">
+        <link rel="canonical" href="https://guyskortsaro.github.io/2_dof_gimbal/Electronics/Boards/ArduinoNANO/">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>Arduino MEGA 2560 - Guy's Blog</title>
+        <title>Arduino NANO - Guy's Blog</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#arduino-mega-2560" class="md-skip">
+        <a href="#arduino-nano" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Arduino MEGA 2560
+              Arduino NANO
             
           </span>
         </div>
@@ -348,44 +348,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#arduino-mega-2560-wiring-scheme" class="md-nav__link">
+  <a href="#motor-2-roll" class="md-nav__link">
     <span class="md-ellipsis">
-      Arduino MEGA 2560 wiring scheme:
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Arduino MEGA 2560 wiring scheme:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#general-connections" class="md-nav__link">
-    <span class="md-ellipsis">
-      General connections
+      Motor 2 ROLL
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#motor-1-pitch" class="md-nav__link">
-    <span class="md-ellipsis">
-      Motor 1 PITCH
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#uart-connections" class="md-nav__link">
     <span class="md-ellipsis">
       UART connections
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -408,58 +384,18 @@
   
 
 
-<div><h1 id="arduino-mega-2560">Arduino MEGA 2560</h1>
+<div><h1 id="arduino-nano">Arduino NANO</h1>
 <ul>
-<li>Arduino MEGA 2560 got selected due to the number of PWM pins available in addition to SPI and I2C that are required by the sensors and actuators.</li>
+<li>As a result of needing to operate one motor with a separate board, the Arduino Nano was selected due to its compact size, sufficient GPIO pins, and adequate processing capabilities.</li>
 </ul>
-<h2 id="arduino-mega-2560-wiring-scheme">Arduino MEGA 2560 wiring scheme:</h2>
-<p><img src="images/arduino_mega_pinset.png" alt="Arduino mega pinset" width="1000"></p>
-<p><a href="https://devboards.info/boards/arduino-mega2560-rev3">Arduino MEGA 2560 detailed specs</a></p>
-<h3 id="general-connections">General connections</h3>
+<h3 id="motor-2-roll">Motor 2 ROLL</h3>
 <table>
 <thead>
 <tr>
 <th>Sensor / Actuactor</th>
 <th>Pin</th>
 <th>Description</th>
-<th>Arduino MEGA 2560 pin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>MPU6050</td>
-<td>SDA</td>
-<td>SDA</td>
-<td>D20 (SDA)</td>
-</tr>
-<tr>
-<td>MPU6050</td>
-<td>SCL</td>
-<td>SCL</td>
-<td>D21 (SCL)</td>
-</tr>
-<tr>
-<td>MPU6050</td>
-<td>Vcc</td>
-<td>Vcc</td>
-<td>3V3</td>
-</tr>
-<tr>
-<td>MPU6050</td>
-<td>GND</td>
-<td>GND</td>
-<td>GND</td>
-</tr>
-</tbody>
-</table>
-<h3 id="motor-1-pitch">Motor 1 PITCH</h3>
-<table>
-<thead>
-<tr>
-<th>Sensor / Actuactor</th>
-<th>Pin</th>
-<th>Description</th>
-<th>Arduino MEGA 2560 pin</th>
+<th>Arduino NANO pin</th>
 </tr>
 </thead>
 <tbody>
@@ -467,25 +403,25 @@
 <td>SimpleFOC mini driver</td>
 <td>EN</td>
 <td>EN</td>
-<td>D8 (PWM)</td>
+<td>D3 (PWM)</td>
 </tr>
 <tr>
 <td>SimpleFOC mini driver</td>
 <td>IN1</td>
 <td>Motor Phase 1</td>
-<td>D2 (PWM)</td>
+<td>D9 (PWM)</td>
 </tr>
 <tr>
 <td>SimpleFOC mini driver</td>
 <td>IN2</td>
 <td>Motor Phase 2</td>
-<td>D3 (PWM)</td>
+<td>D10 (PWM)</td>
 </tr>
 <tr>
 <td>SimpleFOC mini driver</td>
 <td>IN3</td>
 <td>Motor Phase 3</td>
-<td>D4 (PWM)</td>
+<td>D11 (PWM)</td>
 </tr>
 <tr>
 <td>SimpleFOC mini driver</td>

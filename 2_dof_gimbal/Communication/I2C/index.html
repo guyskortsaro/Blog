@@ -12,24 +12,24 @@
         <meta name="author" content="guy Skortsaro">
       
       
-        <link rel="canonical" href="https://guyskortsaro.github.io/2_dof_gimbal/Electronics/Boards/ArduinoMEGA2560/">
+        <link rel="canonical" href="https://guyskortsaro.github.io/2_dof_gimbal/Communication/I2C/">
       
       
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.13">
     
     
       
-        <title>Arduino MEGA 2560 - Guy's Blog</title>
+        <title>I2C - Guy's Blog</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../extra.css">
+      <link rel="stylesheet" href="../../../extra.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#arduino-mega-2560" class="md-skip">
+        <a href="#i2c" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="Guy&#39;s Blog" class="md-header__button md-logo" aria-label="Guy's Blog" data-md-component="logo">
+    <a href="../../.." title="Guy&#39;s Blog" class="md-header__button md-logo" aria-label="Guy's Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Arduino MEGA 2560
+              I2C
             
           </span>
         </div>
@@ -200,7 +200,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -219,7 +219,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../" class="md-tabs__link">
+      <a href="../../" class="md-tabs__link">
         
   
   
@@ -254,7 +254,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Guy&#39;s Blog" class="md-nav__button md-logo" aria-label="Guy's Blog" data-md-component="logo">
+    <a href="../../.." title="Guy&#39;s Blog" class="md-nav__button md-logo" aria-label="Guy's Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -284,7 +284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -306,7 +306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   
@@ -341,56 +341,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#arduino-mega-2560-wiring-scheme" class="md-nav__link">
-    <span class="md-ellipsis">
-      Arduino MEGA 2560 wiring scheme:
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Arduino MEGA 2560 wiring scheme:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#general-connections" class="md-nav__link">
-    <span class="md-ellipsis">
-      General connections
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#motor-1-pitch" class="md-nav__link">
-    <span class="md-ellipsis">
-      Motor 1 PITCH
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uart-connections" class="md-nav__link">
-    <span class="md-ellipsis">
-      UART connections
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -408,118 +358,8 @@
   
 
 
-<div><h1 id="arduino-mega-2560">Arduino MEGA 2560</h1>
-<ul>
-<li>Arduino MEGA 2560 got selected due to the number of PWM pins available in addition to SPI and I2C that are required by the sensors and actuators.</li>
-</ul>
-<h2 id="arduino-mega-2560-wiring-scheme">Arduino MEGA 2560 wiring scheme:</h2>
-<p><img src="images/arduino_mega_pinset.png" alt="Arduino mega pinset" width="1000"></p>
-<p><a href="https://devboards.info/boards/arduino-mega2560-rev3">Arduino MEGA 2560 detailed specs</a></p>
-<h3 id="general-connections">General connections</h3>
-<table>
-<thead>
-<tr>
-<th>Sensor / Actuactor</th>
-<th>Pin</th>
-<th>Description</th>
-<th>Arduino MEGA 2560 pin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>MPU6050</td>
-<td>SDA</td>
-<td>SDA</td>
-<td>D20 (SDA)</td>
-</tr>
-<tr>
-<td>MPU6050</td>
-<td>SCL</td>
-<td>SCL</td>
-<td>D21 (SCL)</td>
-</tr>
-<tr>
-<td>MPU6050</td>
-<td>Vcc</td>
-<td>Vcc</td>
-<td>3V3</td>
-</tr>
-<tr>
-<td>MPU6050</td>
-<td>GND</td>
-<td>GND</td>
-<td>GND</td>
-</tr>
-</tbody>
-</table>
-<h3 id="motor-1-pitch">Motor 1 PITCH</h3>
-<table>
-<thead>
-<tr>
-<th>Sensor / Actuactor</th>
-<th>Pin</th>
-<th>Description</th>
-<th>Arduino MEGA 2560 pin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SimpleFOC mini driver</td>
-<td>EN</td>
-<td>EN</td>
-<td>D8 (PWM)</td>
-</tr>
-<tr>
-<td>SimpleFOC mini driver</td>
-<td>IN1</td>
-<td>Motor Phase 1</td>
-<td>D2 (PWM)</td>
-</tr>
-<tr>
-<td>SimpleFOC mini driver</td>
-<td>IN2</td>
-<td>Motor Phase 2</td>
-<td>D3 (PWM)</td>
-</tr>
-<tr>
-<td>SimpleFOC mini driver</td>
-<td>IN3</td>
-<td>Motor Phase 3</td>
-<td>D4 (PWM)</td>
-</tr>
-<tr>
-<td>SimpleFOC mini driver</td>
-<td>GND</td>
-<td>GND</td>
-<td>GND</td>
-</tr>
-</tbody>
-</table>
-<h3 id="uart-connections">UART connections</h3>
-<table>
-<thead>
-<tr>
-<th>Slave Board</th>
-<th>Pin</th>
-<th>Description</th>
-<th>Arduino MEGA 2560 pin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Arduino NANO</td>
-<td>D6</td>
-<td>Rx -&gt; Tx</td>
-<td>10</td>
-</tr>
-<tr>
-<td>Arduino NANO</td>
-<td>D5</td>
-<td>Tx -&gt; Rx</td>
-<td>11</td>
-</tr>
-</tbody>
-</table></div>
+<div><h1 id="i2c">I2C</h1>
+<p>In this gimbal project, I2C communication is used to interface the MPU6050 sensor with the Arduino Mega. This protocol allows efficient two-wire data transfer, enabling the microcontroller to receive real-time orientation data such as roll and pitch.</p></div>
 
 
 
@@ -574,14 +414,14 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy", "content.code.annotate", "navigation.top", "navigation.tabs", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "search.share"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "navigation.top", "navigation.tabs", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
         <script src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
       
-        <script src="../../../../assets/mathjax.js"></script>
+        <script src="../../../assets/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
