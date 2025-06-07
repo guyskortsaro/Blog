@@ -65,7 +65,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="blue">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -367,18 +367,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#primary" class="md-nav__link">
+  <a href="#master" class="md-nav__link">
     <span class="md-ellipsis">
-      Primary
+      Master
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#secondary" class="md-nav__link">
+  <a href="#slave" class="md-nav__link">
     <span class="md-ellipsis">
-      Secondary
+      Slave
     </span>
   </a>
   
@@ -400,18 +400,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#primary-arduino-mega-2560" class="md-nav__link">
+  <a href="#master_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Primary (Arduino MEGA 2560)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#secondary-arduino-nano" class="md-nav__link">
-    <span class="md-ellipsis">
-      Secondary (Arduino NANO)
+      Master
     </span>
   </a>
   
@@ -436,542 +427,569 @@
                 
                   
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <span class="md-tag">Arduino MEGA</span>
+      
+    
+      
+      
+      
+        <span class="md-tag">Arduino NANO</span>
+      
+    
+      
+      
+      
+        <span class="md-tag">Communication</span>
+      
+    
+      
+      
+      
+        <span class="md-tag">UART</span>
+      
+    
+  </nav>
+
 
   
   
 
 
 <div><h1 id="uart">UART</h1>
-<p>Two microcontrollers exchange data through UART, enabling real-time communication for synchronized control.</p>
+<p>This gimbal project includes two microcontrollers exchanging data through UART, enabling real-time communication for synchronized control.</p>
 <h2 id="uart-interface-in-our-gimbal-system">UART Interface in Our Gimbal System:</h2>
-<p><img alt="UART Interface" src="images/"></p>
+<p><img alt="UART Interface" src="images/Controllers.jpeg"></p>
 <h2 id="simple-uart-code-exemple">Simple UART code exemple:</h2>
 <ul>
-<li>This is an example of pi being sent to the Secondary by the Primary board.</li>
+<li>This is an example of pi being sent to the Slave by the Master board.</li>
 </ul>
-<h3 id="primary">Primary</h3>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span>
-<span class="normal"><a href="#__codelineno-0-6">6</a></span>
-<span class="normal"><a href="#__codelineno-0-7">7</a></span>
-<span class="normal"><a href="#__codelineno-0-8">8</a></span>
-<span class="normal"><a href="#__codelineno-0-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="p">}</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.1416</span><span class="p">;</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">pi</span><span class="p">);</span><span class="w">  </span><span class="c1">// Send pi with newline</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">         </span><span class="c1">// Send once every second</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="p">}</span>
+<h3 id="master">Master</h3>
+<details class="code">
+<summary>Master code</summary>
+</details>
+<p>```cpp
+void setup() {
+Serial.begin(9600);
+}</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>void loop() {
+float pi = 3.1416;
+Serial.println(pi);  // Send pi with newline
+delay(1000);         // Send once every second
+}
+```
 </code></pre></div></td></tr></table></div>
-<h3 id="secondary">Secondary</h3>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-1-10">10</a></span>
-<span class="normal"><a href="#__codelineno-1-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="p">}</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">parseFloat</span><span class="p">();</span><span class="w">  </span><span class="c1">// Read incoming float</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Received: "</span><span class="p">);</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">pi</span><span class="p">);</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="p">}</span>
+<h3 id="slave">Slave</h3>
+<details class="code">
+<summary>Slave code</summary>
+</details>
+<p>```cpp
+void setup() {
+Serial.begin(9600);
+}</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>void loop() {
+if (Serial.available()) {
+    float pi = Serial.parseFloat();  // Read incoming float
+    Serial.print("Received: ");
+    Serial.println(pi);
+}
+}
+```
 </code></pre></div></td></tr></table></div>
 <h2 id="pitch-and-roll-control-using-uart-communication">Pitch and Roll control using UART communication:</h2>
 <ul>
 <li>Notice all PID and Velocity limits are due to development needs and are free to change.</li>
 </ul>
-<h3 id="primary-arduino-mega-2560">Primary (Arduino MEGA 2560)</h3>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">  1</a></span>
-<span class="normal"><a href="#__codelineno-2-2">  2</a></span>
-<span class="normal"><a href="#__codelineno-2-3">  3</a></span>
-<span class="normal"><a href="#__codelineno-2-4">  4</a></span>
-<span class="normal"><a href="#__codelineno-2-5">  5</a></span>
-<span class="normal"><a href="#__codelineno-2-6">  6</a></span>
-<span class="normal"><a href="#__codelineno-2-7">  7</a></span>
-<span class="normal"><a href="#__codelineno-2-8">  8</a></span>
-<span class="normal"><a href="#__codelineno-2-9">  9</a></span>
-<span class="normal"><a href="#__codelineno-2-10"> 10</a></span>
-<span class="normal"><a href="#__codelineno-2-11"> 11</a></span>
-<span class="normal"><a href="#__codelineno-2-12"> 12</a></span>
-<span class="normal"><a href="#__codelineno-2-13"> 13</a></span>
-<span class="normal"><a href="#__codelineno-2-14"> 14</a></span>
-<span class="normal"><a href="#__codelineno-2-15"> 15</a></span>
-<span class="normal"><a href="#__codelineno-2-16"> 16</a></span>
-<span class="normal"><a href="#__codelineno-2-17"> 17</a></span>
-<span class="normal"><a href="#__codelineno-2-18"> 18</a></span>
-<span class="normal"><a href="#__codelineno-2-19"> 19</a></span>
-<span class="normal"><a href="#__codelineno-2-20"> 20</a></span>
-<span class="normal"><a href="#__codelineno-2-21"> 21</a></span>
-<span class="normal"><a href="#__codelineno-2-22"> 22</a></span>
-<span class="normal"><a href="#__codelineno-2-23"> 23</a></span>
-<span class="normal"><a href="#__codelineno-2-24"> 24</a></span>
-<span class="normal"><a href="#__codelineno-2-25"> 25</a></span>
-<span class="normal"><a href="#__codelineno-2-26"> 26</a></span>
-<span class="normal"><a href="#__codelineno-2-27"> 27</a></span>
-<span class="normal"><a href="#__codelineno-2-28"> 28</a></span>
-<span class="normal"><a href="#__codelineno-2-29"> 29</a></span>
-<span class="normal"><a href="#__codelineno-2-30"> 30</a></span>
-<span class="normal"><a href="#__codelineno-2-31"> 31</a></span>
-<span class="normal"><a href="#__codelineno-2-32"> 32</a></span>
-<span class="normal"><a href="#__codelineno-2-33"> 33</a></span>
-<span class="normal"><a href="#__codelineno-2-34"> 34</a></span>
-<span class="normal"><a href="#__codelineno-2-35"> 35</a></span>
-<span class="normal"><a href="#__codelineno-2-36"> 36</a></span>
-<span class="normal"><a href="#__codelineno-2-37"> 37</a></span>
-<span class="normal"><a href="#__codelineno-2-38"> 38</a></span>
-<span class="normal"><a href="#__codelineno-2-39"> 39</a></span>
-<span class="normal"><a href="#__codelineno-2-40"> 40</a></span>
-<span class="normal"><a href="#__codelineno-2-41"> 41</a></span>
-<span class="normal"><a href="#__codelineno-2-42"> 42</a></span>
-<span class="normal"><a href="#__codelineno-2-43"> 43</a></span>
-<span class="normal"><a href="#__codelineno-2-44"> 44</a></span>
-<span class="normal"><a href="#__codelineno-2-45"> 45</a></span>
-<span class="normal"><a href="#__codelineno-2-46"> 46</a></span>
-<span class="normal"><a href="#__codelineno-2-47"> 47</a></span>
-<span class="normal"><a href="#__codelineno-2-48"> 48</a></span>
-<span class="normal"><a href="#__codelineno-2-49"> 49</a></span>
-<span class="normal"><a href="#__codelineno-2-50"> 50</a></span>
-<span class="normal"><a href="#__codelineno-2-51"> 51</a></span>
-<span class="normal"><a href="#__codelineno-2-52"> 52</a></span>
-<span class="normal"><a href="#__codelineno-2-53"> 53</a></span>
-<span class="normal"><a href="#__codelineno-2-54"> 54</a></span>
-<span class="normal"><a href="#__codelineno-2-55"> 55</a></span>
-<span class="normal"><a href="#__codelineno-2-56"> 56</a></span>
-<span class="normal"><a href="#__codelineno-2-57"> 57</a></span>
-<span class="normal"><a href="#__codelineno-2-58"> 58</a></span>
-<span class="normal"><a href="#__codelineno-2-59"> 59</a></span>
-<span class="normal"><a href="#__codelineno-2-60"> 60</a></span>
-<span class="normal"><a href="#__codelineno-2-61"> 61</a></span>
-<span class="normal"><a href="#__codelineno-2-62"> 62</a></span>
-<span class="normal"><a href="#__codelineno-2-63"> 63</a></span>
-<span class="normal"><a href="#__codelineno-2-64"> 64</a></span>
-<span class="normal"><a href="#__codelineno-2-65"> 65</a></span>
-<span class="normal"><a href="#__codelineno-2-66"> 66</a></span>
-<span class="normal"><a href="#__codelineno-2-67"> 67</a></span>
-<span class="normal"><a href="#__codelineno-2-68"> 68</a></span>
-<span class="normal"><a href="#__codelineno-2-69"> 69</a></span>
-<span class="normal"><a href="#__codelineno-2-70"> 70</a></span>
-<span class="normal"><a href="#__codelineno-2-71"> 71</a></span>
-<span class="normal"><a href="#__codelineno-2-72"> 72</a></span>
-<span class="normal"><a href="#__codelineno-2-73"> 73</a></span>
-<span class="normal"><a href="#__codelineno-2-74"> 74</a></span>
-<span class="normal"><a href="#__codelineno-2-75"> 75</a></span>
-<span class="normal"><a href="#__codelineno-2-76"> 76</a></span>
-<span class="normal"><a href="#__codelineno-2-77"> 77</a></span>
-<span class="normal"><a href="#__codelineno-2-78"> 78</a></span>
-<span class="normal"><a href="#__codelineno-2-79"> 79</a></span>
-<span class="normal"><a href="#__codelineno-2-80"> 80</a></span>
-<span class="normal"><a href="#__codelineno-2-81"> 81</a></span>
-<span class="normal"><a href="#__codelineno-2-82"> 82</a></span>
-<span class="normal"><a href="#__codelineno-2-83"> 83</a></span>
-<span class="normal"><a href="#__codelineno-2-84"> 84</a></span>
-<span class="normal"><a href="#__codelineno-2-85"> 85</a></span>
-<span class="normal"><a href="#__codelineno-2-86"> 86</a></span>
-<span class="normal"><a href="#__codelineno-2-87"> 87</a></span>
-<span class="normal"><a href="#__codelineno-2-88"> 88</a></span>
-<span class="normal"><a href="#__codelineno-2-89"> 89</a></span>
-<span class="normal"><a href="#__codelineno-2-90"> 90</a></span>
-<span class="normal"><a href="#__codelineno-2-91"> 91</a></span>
-<span class="normal"><a href="#__codelineno-2-92"> 92</a></span>
-<span class="normal"><a href="#__codelineno-2-93"> 93</a></span>
-<span class="normal"><a href="#__codelineno-2-94"> 94</a></span>
-<span class="normal"><a href="#__codelineno-2-95"> 95</a></span>
-<span class="normal"><a href="#__codelineno-2-96"> 96</a></span>
-<span class="normal"><a href="#__codelineno-2-97"> 97</a></span>
-<span class="normal"><a href="#__codelineno-2-98"> 98</a></span>
-<span class="normal"><a href="#__codelineno-2-99"> 99</a></span>
-<span class="normal"><a href="#__codelineno-2-100">100</a></span>
-<span class="normal"><a href="#__codelineno-2-101">101</a></span>
-<span class="normal"><a href="#__codelineno-2-102">102</a></span>
-<span class="normal"><a href="#__codelineno-2-103">103</a></span>
-<span class="normal"><a href="#__codelineno-2-104">104</a></span>
-<span class="normal"><a href="#__codelineno-2-105">105</a></span>
-<span class="normal"><a href="#__codelineno-2-106">106</a></span>
-<span class="normal"><a href="#__codelineno-2-107">107</a></span>
-<span class="normal"><a href="#__codelineno-2-108">108</a></span>
-<span class="normal"><a href="#__codelineno-2-109">109</a></span>
-<span class="normal"><a href="#__codelineno-2-110">110</a></span>
-<span class="normal"><a href="#__codelineno-2-111">111</a></span>
-<span class="normal"><a href="#__codelineno-2-112">112</a></span>
-<span class="normal"><a href="#__codelineno-2-113">113</a></span>
-<span class="normal"><a href="#__codelineno-2-114">114</a></span>
-<span class="normal"><a href="#__codelineno-2-115">115</a></span>
-<span class="normal"><a href="#__codelineno-2-116">116</a></span>
-<span class="normal"><a href="#__codelineno-2-117">117</a></span>
-<span class="normal"><a href="#__codelineno-2-118">118</a></span>
-<span class="normal"><a href="#__codelineno-2-119">119</a></span>
-<span class="normal"><a href="#__codelineno-2-120">120</a></span>
-<span class="normal"><a href="#__codelineno-2-121">121</a></span>
-<span class="normal"><a href="#__codelineno-2-122">122</a></span>
-<span class="normal"><a href="#__codelineno-2-123">123</a></span>
-<span class="normal"><a href="#__codelineno-2-124">124</a></span>
-<span class="normal"><a href="#__codelineno-2-125">125</a></span>
-<span class="normal"><a href="#__codelineno-2-126">126</a></span>
-<span class="normal"><a href="#__codelineno-2-127">127</a></span>
-<span class="normal"><a href="#__codelineno-2-128">128</a></span>
-<span class="normal"><a href="#__codelineno-2-129">129</a></span>
-<span class="normal"><a href="#__codelineno-2-130">130</a></span>
-<span class="normal"><a href="#__codelineno-2-131">131</a></span>
-<span class="normal"><a href="#__codelineno-2-132">132</a></span>
-<span class="normal"><a href="#__codelineno-2-133">133</a></span>
-<span class="normal"><a href="#__codelineno-2-134">134</a></span>
-<span class="normal"><a href="#__codelineno-2-135">135</a></span>
-<span class="normal"><a href="#__codelineno-2-136">136</a></span>
-<span class="normal"><a href="#__codelineno-2-137">137</a></span>
-<span class="normal"><a href="#__codelineno-2-138">138</a></span>
-<span class="normal"><a href="#__codelineno-2-139">139</a></span>
-<span class="normal"><a href="#__codelineno-2-140">140</a></span>
-<span class="normal"><a href="#__codelineno-2-141">141</a></span>
-<span class="normal"><a href="#__codelineno-2-142">142</a></span>
-<span class="normal"><a href="#__codelineno-2-143">143</a></span>
-<span class="normal"><a href="#__codelineno-2-144">144</a></span>
-<span class="normal"><a href="#__codelineno-2-145">145</a></span>
-<span class="normal"><a href="#__codelineno-2-146">146</a></span>
-<span class="normal"><a href="#__codelineno-2-147">147</a></span>
-<span class="normal"><a href="#__codelineno-2-148">148</a></span>
-<span class="normal"><a href="#__codelineno-2-149">149</a></span>
-<span class="normal"><a href="#__codelineno-2-150">150</a></span>
-<span class="normal"><a href="#__codelineno-2-151">151</a></span>
-<span class="normal"><a href="#__codelineno-2-152">152</a></span>
-<span class="normal"><a href="#__codelineno-2-153">153</a></span>
-<span class="normal"><a href="#__codelineno-2-154">154</a></span>
-<span class="normal"><a href="#__codelineno-2-155">155</a></span>
-<span class="normal"><a href="#__codelineno-2-156">156</a></span>
-<span class="normal"><a href="#__codelineno-2-157">157</a></span>
-<span class="normal"><a href="#__codelineno-2-158">158</a></span>
-<span class="normal"><a href="#__codelineno-2-159">159</a></span>
-<span class="normal"><a href="#__codelineno-2-160">160</a></span>
-<span class="normal"><a href="#__codelineno-2-161">161</a></span>
-<span class="normal"><a href="#__codelineno-2-162">162</a></span>
-<span class="normal"><a href="#__codelineno-2-163">163</a></span>
-<span class="normal"><a href="#__codelineno-2-164">164</a></span>
-<span class="normal"><a href="#__codelineno-2-165">165</a></span>
-<span class="normal"><a href="#__codelineno-2-166">166</a></span>
-<span class="normal"><a href="#__codelineno-2-167">167</a></span>
-<span class="normal"><a href="#__codelineno-2-168">168</a></span>
-<span class="normal"><a href="#__codelineno-2-169">169</a></span>
-<span class="normal"><a href="#__codelineno-2-170">170</a></span>
-<span class="normal"><a href="#__codelineno-2-171">171</a></span>
-<span class="normal"><a href="#__codelineno-2-172">172</a></span>
-<span class="normal"><a href="#__codelineno-2-173">173</a></span>
-<span class="normal"><a href="#__codelineno-2-174">174</a></span>
-<span class="normal"><a href="#__codelineno-2-175">175</a></span>
-<span class="normal"><a href="#__codelineno-2-176">176</a></span>
-<span class="normal"><a href="#__codelineno-2-177">177</a></span>
-<span class="normal"><a href="#__codelineno-2-178">178</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"Pitch_init.h"</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"Roll_init.h"</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"myPID.h"</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Arduino.h&gt;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;MPU6050.h&gt;</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SimpleFOC.h&gt;</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SoftwareSerial.h&gt;</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="c1">// --------- UART Configuration ---------- //</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="n">SoftwareSerial</span><span class="w"> </span><span class="nf">arduinoB</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">);</span><span class="w"> </span><span class="c1">// Rx,Tx pins</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="c1">// ---------- IMU Configuration ---------- //</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="n">MPU6050</span><span class="w"> </span><span class="n">mpu</span><span class="p">;</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="kt">float</span><span class="w">       </span><span class="n">gyroBiasX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="n">gyroBiasY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="kt">float</span><span class="w">       </span><span class="n">roll</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="kt">float</span><span class="w">       </span><span class="n">pitch</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="kt">float</span><span class="w">       </span><span class="n">gyroRollRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="n">gyroPitchRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="kt">float</span><span class="w">       </span><span class="n">prevPitchRate</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">alpha</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mf">0.98</span><span class="p">;</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">GYRO_SCALE</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mf">131.0</span><span class="p">;</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">GYRO_LPF_ALPHA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.95</span><span class="p">;</span>
-<a id="__codelineno-2-25" name="__codelineno-2-25"></a>
-<a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="c1">// --------- Timing Variables ------------ //</span>
-<a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">lastTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">currentTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="kt">float</span><span class="w">         </span><span class="n">dt</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
-<a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">lastTime_PID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">currentTime_PID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="kt">float</span><span class="w">         </span><span class="n">dt_PID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
-<a id="__codelineno-2-31" name="__codelineno-2-31"></a>
-<a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="c1">// ----------- Debugging Vars ----------- //</span>
-<a id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="kt">int</span><span class="w"> </span><span class="n">debugger_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<a id="__codelineno-2-34" name="__codelineno-2-34"></a>
-<a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="c1">// -------- PID Control Variables -------- //</span>
-<a id="__codelineno-2-36" name="__codelineno-2-36"></a><span class="n">myPID</span><span class="w"> </span><span class="nf">rollPID</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span>
-<a id="__codelineno-2-37" name="__codelineno-2-37"></a><span class="kt">float</span><span class="w"> </span><span class="n">RollPID_output</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
-<a id="__codelineno-2-38" name="__codelineno-2-38"></a><span class="kt">float</span><span class="w"> </span><span class="n">Roll_target_velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
-<a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="n">myPID</span><span class="w"> </span><span class="nf">pitchPID</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span>
-<a id="__codelineno-2-40" name="__codelineno-2-40"></a><span class="kt">float</span><span class="w"> </span><span class="n">PitchPID_output</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
-<a id="__codelineno-2-41" name="__codelineno-2-41"></a><span class="kt">float</span><span class="w"> </span><span class="n">Pitch_target_velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
-<a id="__codelineno-2-42" name="__codelineno-2-42"></a>
-<a id="__codelineno-2-43" name="__codelineno-2-43"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Initialize_IMU</span><span class="p">()</span>
-<a id="__codelineno-2-44" name="__codelineno-2-44"></a><span class="p">{</span>
-<a id="__codelineno-2-45" name="__codelineno-2-45"></a><span class="w">    </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
-<a id="__codelineno-2-46" name="__codelineno-2-46"></a><span class="w">    </span><span class="n">mpu</span><span class="p">.</span><span class="n">initialize</span><span class="p">();</span>
-<a id="__codelineno-2-47" name="__codelineno-2-47"></a>
-<a id="__codelineno-2-48" name="__codelineno-2-48"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">mpu</span><span class="p">.</span><span class="n">testConnection</span><span class="p">())</span>
-<a id="__codelineno-2-49" name="__codelineno-2-49"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-2-50" name="__codelineno-2-50"></a><span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"MPU6050 connection failed!"</span><span class="p">);</span>
-<a id="__codelineno-2-51" name="__codelineno-2-51"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-2-52" name="__codelineno-2-52"></a><span class="w">            </span><span class="p">;</span>
-<a id="__codelineno-2-53" name="__codelineno-2-53"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-2-54" name="__codelineno-2-54"></a>
-<a id="__codelineno-2-55" name="__codelineno-2-55"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"MPU6050 initialized."</span><span class="p">);</span>
-<a id="__codelineno-2-56" name="__codelineno-2-56"></a><span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-<a id="__codelineno-2-57" name="__codelineno-2-57"></a><span class="p">}</span>
-<a id="__codelineno-2-58" name="__codelineno-2-58"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Gyro_Bias_Calibration</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">samples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">360</span><span class="p">)</span>
-<a id="__codelineno-2-59" name="__codelineno-2-59"></a><span class="p">{</span>
-<a id="__codelineno-2-60" name="__codelineno-2-60"></a><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">gxSum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">gySum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<a id="__codelineno-2-61" name="__codelineno-2-61"></a>
-<a id="__codelineno-2-62" name="__codelineno-2-62"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Calibrating gyroscope... Keep the sensor still."</span><span class="p">);</span>
-<a id="__codelineno-2-63" name="__codelineno-2-63"></a>
-<a id="__codelineno-2-64" name="__codelineno-2-64"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">samples</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
-<a id="__codelineno-2-65" name="__codelineno-2-65"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-2-66" name="__codelineno-2-66"></a><span class="w">        </span><span class="n">gxSum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">mpu</span><span class="p">.</span><span class="n">getRotationX</span><span class="p">();</span>
-<a id="__codelineno-2-67" name="__codelineno-2-67"></a><span class="w">        </span><span class="n">gySum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">mpu</span><span class="p">.</span><span class="n">getRotationY</span><span class="p">();</span>
-<a id="__codelineno-2-68" name="__codelineno-2-68"></a><span class="w">        </span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<a id="__codelineno-2-69" name="__codelineno-2-69"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-2-70" name="__codelineno-2-70"></a>
-<a id="__codelineno-2-71" name="__codelineno-2-71"></a><span class="w">    </span><span class="n">gyroBiasX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gxSum</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">samples</span><span class="p">;</span>
-<a id="__codelineno-2-72" name="__codelineno-2-72"></a><span class="w">    </span><span class="n">gyroBiasY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gySum</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">samples</span><span class="p">;</span>
-<a id="__codelineno-2-73" name="__codelineno-2-73"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Gyro bias X: "</span><span class="p">);</span>
-<a id="__codelineno-2-74" name="__codelineno-2-74"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">gyroBiasX</span><span class="p">);</span>
-<a id="__codelineno-2-75" name="__codelineno-2-75"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Gyro bias Y: "</span><span class="p">);</span>
-<a id="__codelineno-2-76" name="__codelineno-2-76"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">gyroBiasY</span><span class="p">);</span>
-<a id="__codelineno-2-77" name="__codelineno-2-77"></a><span class="w">    </span><span class="n">lastTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">millis</span><span class="p">();</span><span class="w"> </span><span class="c1">// Initialize timer</span>
-<a id="__codelineno-2-78" name="__codelineno-2-78"></a><span class="p">}</span>
-<a id="__codelineno-2-79" name="__codelineno-2-79"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Initialize_Drivers</span><span class="p">()</span>
-<a id="__codelineno-2-80" name="__codelineno-2-80"></a><span class="p">{</span>
-<a id="__codelineno-2-81" name="__codelineno-2-81"></a><span class="w">    </span><span class="n">PITCH_driver</span><span class="p">.</span><span class="n">voltage_power_supply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span>
-<a id="__codelineno-2-82" name="__codelineno-2-82"></a><span class="w">    </span><span class="n">PITCH_driver</span><span class="p">.</span><span class="n">init</span><span class="p">();</span>
-<a id="__codelineno-2-83" name="__codelineno-2-83"></a><span class="p">}</span>
-<a id="__codelineno-2-84" name="__codelineno-2-84"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Linking_Drivers_And_Encoders_To_Motors</span><span class="p">()</span>
-<a id="__codelineno-2-85" name="__codelineno-2-85"></a><span class="p">{</span>
-<a id="__codelineno-2-86" name="__codelineno-2-86"></a><span class="w">    </span><span class="n">PITCH_motor</span><span class="p">.</span><span class="n">linkDriver</span><span class="p">(</span><span class="o">&amp;</span><span class="n">PITCH_driver</span><span class="p">);</span>
-<a id="__codelineno-2-87" name="__codelineno-2-87"></a><span class="p">}</span>
-<a id="__codelineno-2-88" name="__codelineno-2-88"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Setting_Motors_Modes</span><span class="p">()</span>
-<a id="__codelineno-2-89" name="__codelineno-2-89"></a><span class="p">{</span>
-<a id="__codelineno-2-90" name="__codelineno-2-90"></a><span class="w">    </span><span class="n">PITCH_motor</span><span class="p">.</span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MotionControlType</span><span class="o">::</span><span class="n">velocity_openloop</span><span class="p">;</span>
-<a id="__codelineno-2-91" name="__codelineno-2-91"></a><span class="p">}</span>
-<a id="__codelineno-2-92" name="__codelineno-2-92"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Initialize_Motors</span><span class="p">()</span>
-<a id="__codelineno-2-93" name="__codelineno-2-93"></a><span class="p">{</span>
-<a id="__codelineno-2-94" name="__codelineno-2-94"></a><span class="w">    </span><span class="n">PITCH_motor</span><span class="p">.</span><span class="n">init</span><span class="p">();</span>
-<a id="__codelineno-2-95" name="__codelineno-2-95"></a><span class="w">    </span><span class="n">PITCH_motor</span><span class="p">.</span><span class="n">initFOC</span><span class="p">();</span>
-<a id="__codelineno-2-96" name="__codelineno-2-96"></a><span class="p">}</span>
-<a id="__codelineno-2-97" name="__codelineno-2-97"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Pitch_And_Roll_Calculation</span><span class="p">()</span>
-<a id="__codelineno-2-98" name="__codelineno-2-98"></a><span class="p">{</span>
-<a id="__codelineno-2-99" name="__codelineno-2-99"></a><span class="w">    </span><span class="c1">// Read raw data</span>
-<a id="__codelineno-2-100" name="__codelineno-2-100"></a><span class="w">    </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">ax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mpu</span><span class="p">.</span><span class="n">getAccelerationX</span><span class="p">();</span>
-<a id="__codelineno-2-101" name="__codelineno-2-101"></a><span class="w">    </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">ay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mpu</span><span class="p">.</span><span class="n">getAccelerationY</span><span class="p">();</span>
-<a id="__codelineno-2-102" name="__codelineno-2-102"></a><span class="w">    </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">az</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mpu</span><span class="p">.</span><span class="n">getAccelerationZ</span><span class="p">();</span>
-<a id="__codelineno-2-103" name="__codelineno-2-103"></a><span class="w">    </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">gx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mpu</span><span class="p">.</span><span class="n">getRotationX</span><span class="p">();</span>
-<a id="__codelineno-2-104" name="__codelineno-2-104"></a><span class="w">    </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">gy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mpu</span><span class="p">.</span><span class="n">getRotationY</span><span class="p">();</span>
-<a id="__codelineno-2-105" name="__codelineno-2-105"></a>
-<a id="__codelineno-2-106" name="__codelineno-2-106"></a><span class="w">    </span><span class="c1">// Time delta in seconds</span>
-<a id="__codelineno-2-107" name="__codelineno-2-107"></a><span class="w">    </span><span class="n">currentTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">millis</span><span class="p">();</span>
-<a id="__codelineno-2-108" name="__codelineno-2-108"></a><span class="w">    </span><span class="n">dt</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)(</span><span class="n">currentTime</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">lastTime</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000.0f</span><span class="p">;</span>
-<a id="__codelineno-2-109" name="__codelineno-2-109"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dt</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">)</span>
-<a id="__codelineno-2-110" name="__codelineno-2-110"></a><span class="w">        </span><span class="n">dt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.001</span><span class="p">;</span>
-<a id="__codelineno-2-111" name="__codelineno-2-111"></a><span class="w">    </span><span class="n">lastTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentTime</span><span class="p">;</span>
-<a id="__codelineno-2-112" name="__codelineno-2-112"></a>
-<a id="__codelineno-2-113" name="__codelineno-2-113"></a><span class="w">    </span><span class="c1">// Convert accelerometer to float</span>
-<a id="__codelineno-2-114" name="__codelineno-2-114"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">axf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">ax</span><span class="p">;</span>
-<a id="__codelineno-2-115" name="__codelineno-2-115"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">ayf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">ay</span><span class="p">;</span>
-<a id="__codelineno-2-116" name="__codelineno-2-116"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">azf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">az</span><span class="p">;</span>
-<a id="__codelineno-2-117" name="__codelineno-2-117"></a>
-<a id="__codelineno-2-118" name="__codelineno-2-118"></a><span class="w">    </span><span class="c1">// Accel-derived angles</span>
-<a id="__codelineno-2-119" name="__codelineno-2-119"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">accelRoll</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">atan2</span><span class="p">(</span><span class="n">ayf</span><span class="p">,</span><span class="w"> </span><span class="n">azf</span><span class="p">);</span><span class="w">                          </span><span class="c1">// around X</span>
-<a id="__codelineno-2-120" name="__codelineno-2-120"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">accelPitch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atan2</span><span class="p">(</span><span class="o">-</span><span class="n">axf</span><span class="p">,</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="n">ayf</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ayf</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">azf</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">azf</span><span class="p">));</span><span class="w"> </span><span class="c1">// around Y</span>
-<a id="__codelineno-2-121" name="__codelineno-2-121"></a>
-<a id="__codelineno-2-122" name="__codelineno-2-122"></a><span class="w">    </span><span class="c1">// --- Filter time check ---</span>
-<a id="__codelineno-2-123" name="__codelineno-2-123"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.001f</span><span class="p">)</span>
-<a id="__codelineno-2-124" name="__codelineno-2-124"></a><span class="w">        </span><span class="n">dt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.001f</span><span class="p">;</span>
-<a id="__codelineno-2-125" name="__codelineno-2-125"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dt</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.05f</span><span class="p">)</span>
-<a id="__codelineno-2-126" name="__codelineno-2-126"></a><span class="w">        </span><span class="n">dt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.05f</span><span class="p">;</span>
-<a id="__codelineno-2-127" name="__codelineno-2-127"></a>
-<a id="__codelineno-2-128" name="__codelineno-2-128"></a><span class="w">    </span><span class="c1">// --- Raw gyro conversion ---</span>
-<a id="__codelineno-2-129" name="__codelineno-2-129"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">rawGyroRoll</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">gx</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">gyroBiasX</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">GYRO_SCALE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">DEG_TO_RAD</span><span class="p">;</span>
-<a id="__codelineno-2-130" name="__codelineno-2-130"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">rawGyroPitch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">gy</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">gyroBiasY</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">GYRO_SCALE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">DEG_TO_RAD</span><span class="p">;</span>
-<a id="__codelineno-2-131" name="__codelineno-2-131"></a>
-<a id="__codelineno-2-132" name="__codelineno-2-132"></a><span class="w">    </span><span class="c1">// --- LPF smoothing ---</span>
-<a id="__codelineno-2-133" name="__codelineno-2-133"></a><span class="w">    </span><span class="n">gyroRollRate</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">GYRO_LPF_ALPHA</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">gyroRollRate</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">GYRO_LPF_ALPHA</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">rawGyroRoll</span><span class="p">;</span>
-<a id="__codelineno-2-134" name="__codelineno-2-134"></a><span class="w">    </span><span class="n">gyroPitchRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GYRO_LPF_ALPHA</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">gyroPitchRate</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">GYRO_LPF_ALPHA</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">rawGyroPitch</span><span class="p">;</span>
-<a id="__codelineno-2-135" name="__codelineno-2-135"></a>
-<a id="__codelineno-2-136" name="__codelineno-2-136"></a><span class="w">    </span><span class="c1">// --- Complementary filter ---</span>
-<a id="__codelineno-2-137" name="__codelineno-2-137"></a><span class="w">    </span><span class="n">roll</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">roll</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">gyroRollRate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dt</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">alpha</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">accelRoll</span><span class="p">;</span>
-<a id="__codelineno-2-138" name="__codelineno-2-138"></a><span class="w">    </span><span class="n">pitch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">pitch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">gyroPitchRate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dt</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">alpha</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">accelPitch</span><span class="p">;</span>
-<a id="__codelineno-2-139" name="__codelineno-2-139"></a><span class="p">}</span>
-<a id="__codelineno-2-140" name="__codelineno-2-140"></a><span class="kt">void</span><span class="w"> </span><span class="nf">PID_calculation_Motor_move</span><span class="p">()</span>
-<a id="__codelineno-2-141" name="__codelineno-2-141"></a><span class="p">{</span>
-<a id="__codelineno-2-142" name="__codelineno-2-142"></a><span class="w">    </span><span class="n">currentTime_PID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">millis</span><span class="p">();</span>
-<a id="__codelineno-2-143" name="__codelineno-2-143"></a><span class="w">    </span><span class="n">dt_PID</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)(</span><span class="n">currentTime_PID</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">lastTime_PID</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000.0f</span><span class="p">;</span>
-<a id="__codelineno-2-144" name="__codelineno-2-144"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dt_PID</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0.01</span><span class="p">)</span>
-<a id="__codelineno-2-145" name="__codelineno-2-145"></a><span class="w">        </span><span class="n">dt_PID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.001</span><span class="p">;</span>
-<a id="__codelineno-2-146" name="__codelineno-2-146"></a><span class="w">    </span><span class="n">lastTime_PID</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">currentTime_PID</span><span class="p">;</span>
-<a id="__codelineno-2-147" name="__codelineno-2-147"></a><span class="w">    </span><span class="n">RollPID_output</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">rollPID</span><span class="p">.</span><span class="n">compute</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="n">roll</span><span class="p">,</span><span class="w"> </span><span class="n">dt_PID</span><span class="p">);</span>
-<a id="__codelineno-2-148" name="__codelineno-2-148"></a><span class="w">    </span><span class="n">PitchPID_output</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">pitchPID</span><span class="p">.</span><span class="n">compute</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="n">pitch</span><span class="p">,</span><span class="w"> </span><span class="n">dt_PID</span><span class="p">);</span>
-<a id="__codelineno-2-149" name="__codelineno-2-149"></a><span class="w">    </span><span class="n">Roll_target_velocity</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">constrain</span><span class="p">(</span><span class="n">RollPID_output</span><span class="p">,</span><span class="w"> </span><span class="mf">-2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">);</span>
-<a id="__codelineno-2-150" name="__codelineno-2-150"></a><span class="w">    </span><span class="n">Pitch_target_velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">constrain</span><span class="p">(</span><span class="n">PitchPID_output</span><span class="p">,</span><span class="w"> </span><span class="mf">-2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">);</span>
-<a id="__codelineno-2-151" name="__codelineno-2-151"></a><span class="w">    </span><span class="n">PITCH_motor</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">Pitch_target_velocity</span><span class="p">);</span>
-<a id="__codelineno-2-152" name="__codelineno-2-152"></a><span class="p">}</span>
-<a id="__codelineno-2-153" name="__codelineno-2-153"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
-<a id="__codelineno-2-154" name="__codelineno-2-154"></a><span class="p">{</span>
-<a id="__codelineno-2-155" name="__codelineno-2-155"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
-<a id="__codelineno-2-156" name="__codelineno-2-156"></a><span class="w">    </span><span class="n">arduinoB</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
-<a id="__codelineno-2-157" name="__codelineno-2-157"></a><span class="w">    </span><span class="n">Initialize_Drivers</span><span class="p">();</span>
-<a id="__codelineno-2-158" name="__codelineno-2-158"></a><span class="w">    </span><span class="n">Linking_Drivers_And_Encoders_To_Motors</span><span class="p">();</span>
-<a id="__codelineno-2-159" name="__codelineno-2-159"></a><span class="w">    </span><span class="n">Setting_Motors_Modes</span><span class="p">();</span>
-<a id="__codelineno-2-160" name="__codelineno-2-160"></a><span class="w">    </span><span class="n">Initialize_Motors</span><span class="p">();</span>
-<a id="__codelineno-2-161" name="__codelineno-2-161"></a><span class="w">    </span><span class="n">Initialize_IMU</span><span class="p">();</span>
-<a id="__codelineno-2-162" name="__codelineno-2-162"></a><span class="w">    </span><span class="n">Gyro_Bias_Calibration</span><span class="p">();</span>
-<a id="__codelineno-2-163" name="__codelineno-2-163"></a><span class="p">}</span>
-<a id="__codelineno-2-164" name="__codelineno-2-164"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span>
-<a id="__codelineno-2-165" name="__codelineno-2-165"></a><span class="p">{</span>
-<a id="__codelineno-2-166" name="__codelineno-2-166"></a><span class="w">    </span><span class="n">Pitch_And_Roll_Calculation</span><span class="p">();</span>
-<a id="__codelineno-2-167" name="__codelineno-2-167"></a><span class="w">    </span><span class="n">PID_calculation_Motor_move</span><span class="p">();</span>
-<a id="__codelineno-2-168" name="__codelineno-2-168"></a><span class="w">    </span><span class="n">arduinoB</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"R:"</span><span class="p">);</span>
-<a id="__codelineno-2-169" name="__codelineno-2-169"></a><span class="w">    </span><span class="n">arduinoB</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">Roll_target_velocity</span><span class="p">);</span>
-<a id="__codelineno-2-170" name="__codelineno-2-170"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">millis</span><span class="p">());</span>
-<a id="__codelineno-2-171" name="__codelineno-2-171"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">","</span><span class="p">);</span>
-<a id="__codelineno-2-172" name="__codelineno-2-172"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">roll</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
-<a id="__codelineno-2-173" name="__codelineno-2-173"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">","</span><span class="p">);</span>
-<a id="__codelineno-2-174" name="__codelineno-2-174"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">Roll_target_velocity</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
-<a id="__codelineno-2-175" name="__codelineno-2-175"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">","</span><span class="p">);</span>
-<a id="__codelineno-2-176" name="__codelineno-2-176"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">pitch</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
-<a id="__codelineno-2-177" name="__codelineno-2-177"></a><span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<a id="__codelineno-2-178" name="__codelineno-2-178"></a><span class="p">}</span>
+<h3 id="master_1">Master</h3>
+<ul>
+<li>Arduino Mega 2560</li>
+</ul>
+<details class="code">
+<summary>Master code</summary>
+</details>
+<p>```cpp</p>
+<h1 id="include-pitch_inith">include "Pitch_init.h"</h1>
+<h1 id="include-roll_inith">include "Roll_init.h"</h1>
+<h1 id="include-mypidh">include "myPID.h"</h1>
+<h1 id="include">include <arduino.h></arduino.h></h1>
+<h1 id="include_1">include <mpu6050.h></mpu6050.h></h1>
+<h1 id="include_2">include <simplefoc.h></simplefoc.h></h1>
+<h1 id="include_3">include <softwareserial.h></softwareserial.h></h1>
+<h1 id="include_4">include <wire.h></wire.h></h1>
+<h1 id="include_5">include <math.h></math.h></h1>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span></pre></div></td><td class="code"><div><pre><span></span><code>// --------- UART Configuration ---------- //
+SoftwareSerial arduinoB(10, 11); // Rx,Tx pins
+
+// ---------- IMU Configuration ---------- //
+MPU6050 mpu;
+
+float       gyroBiasX = 0.0, gyroBiasY = 0.0;
+float       roll         = 0.0;
+float       pitch        = 0.0;
+float       gyroRollRate = 0.0, gyroPitchRate = 0.0;
+float       prevPitchRate  = 0.0;
+const float alpha          = 0.98;
+const float GYRO_SCALE     = 131.0;
+const float GYRO_LPF_ALPHA = 0.95;
+
+// --------- Timing Variables ------------ //
+unsigned long lastTime = 0, currentTime = 0;
+float         dt           = 0.0;
+unsigned long lastTime_PID = 0, currentTime_PID = 0;
+float         dt_PID = 0.0;
+
+// ----------- Debugging Vars ----------- //
+int debugger_index = 0;
+
+// -------- PID Control Variables -------- //
+myPID rollPID(1.0, 0.0, 0.0);
+float RollPID_output       = 0.0;
+float Roll_target_velocity = 0.0;
+myPID pitchPID(1.0, 0.0, 0.0);
+float PitchPID_output       = 0.0;
+float Pitch_target_velocity = 0.0;
+
+void Initialize_IMU()
+{
+    Wire.begin();
+    mpu.initialize();
+
+    if (!mpu.testConnection())
+    {
+        Serial.println("MPU6050 connection failed!");
+        while (1)
+            ;
+    }
+
+    Serial.println("MPU6050 initialized.");
+    delay(1000);
+}
+void Gyro_Bias_Calibration(int samples = 360)
+{
+    long gxSum = 0, gySum = 0;
+
+    Serial.println("Calibrating gyroscope... Keep the sensor still.");
+
+    for (int i = 0; i &lt; samples; i++)
+    {
+        gxSum += mpu.getRotationX();
+        gySum += mpu.getRotationY();
+        delay(2);
+    }
+
+    gyroBiasX = gxSum / (float)samples;
+    gyroBiasY = gySum / (float)samples;
+    Serial.print("Gyro bias X: ");
+    Serial.println(gyroBiasX);
+    Serial.print("Gyro bias Y: ");
+    Serial.println(gyroBiasY);
+    lastTime = millis(); // Initialize timer
+}
+void Initialize_Drivers()
+{
+    PITCH_driver.voltage_power_supply = 12;
+    PITCH_driver.init();
+}
+void Linking_Drivers_And_Encoders_To_Motors()
+{
+    PITCH_motor.linkDriver(&amp;PITCH_driver);
+}
+void Setting_Motors_Modes()
+{
+    PITCH_motor.controller = MotionControlType::velocity_openloop;
+}
+void Initialize_Motors()
+{
+    PITCH_motor.init();
+    PITCH_motor.initFOC();
+}
+void Pitch_And_Roll_Calculation()
+{
+    // Read raw data
+    int16_t ax = mpu.getAccelerationX();
+    int16_t ay = mpu.getAccelerationY();
+    int16_t az = mpu.getAccelerationZ();
+    int16_t gx = mpu.getRotationX();
+    int16_t gy = mpu.getRotationY();
+
+    // Time delta in seconds
+    currentTime = millis();
+    dt          = (float)(currentTime - lastTime) / 1000.0f;
+    if (dt &lt;= 0.0)
+        dt = 0.001;
+    lastTime = currentTime;
+
+    // Convert accelerometer to float
+    float axf = (float)ax;
+    float ayf = (float)ay;
+    float azf = (float)az;
+
+    // Accel-derived angles
+    float accelRoll  = atan2(ayf, azf);                          // around X
+    float accelPitch = atan2(-axf, sqrt(ayf * ayf + azf * azf)); // around Y
+
+    // --- Filter time check ---
+    if (dt &lt; 0.001f)
+        dt = 0.001f;
+    if (dt &gt; 0.05f)
+        dt = 0.05f;
+
+    // --- Raw gyro conversion ---
+    float rawGyroRoll  = (gx - gyroBiasX) / GYRO_SCALE * DEG_TO_RAD;
+    float rawGyroPitch = (gy - gyroBiasY) / GYRO_SCALE * DEG_TO_RAD;
+
+    // --- LPF smoothing ---
+    gyroRollRate  = GYRO_LPF_ALPHA * gyroRollRate + (1 - GYRO_LPF_ALPHA) * rawGyroRoll;
+    gyroPitchRate = GYRO_LPF_ALPHA * gyroPitchRate + (1 - GYRO_LPF_ALPHA) * rawGyroPitch;
+
+    // --- Complementary filter ---
+    roll  = alpha * (roll + gyroRollRate * dt) + (1 - alpha) * accelRoll;
+    pitch = alpha * (pitch + gyroPitchRate * dt) + (1 - alpha) * accelPitch;
+}
+void PID_calculation_Motor_move()
+{
+    currentTime_PID = millis();
+    dt_PID          = (float)(currentTime_PID - lastTime_PID) / 1000.0f;
+    if (dt_PID &lt;= 0.01)
+        dt_PID = 0.001;
+    lastTime_PID          = currentTime_PID;
+    RollPID_output        = rollPID.compute(0.0, roll, dt_PID);
+    PitchPID_output       = pitchPID.compute(0.0, pitch, dt_PID);
+    Roll_target_velocity  = constrain(RollPID_output, -2.0, 2.0);
+    Pitch_target_velocity = constrain(PitchPID_output, -2.0, 2.0);
+    PITCH_motor.move(Pitch_target_velocity);
+}
+void setup()
+{
+    Serial.begin(115200);
+    arduinoB.begin(115200);
+    Initialize_Drivers();
+    Linking_Drivers_And_Encoders_To_Motors();
+    Setting_Motors_Modes();
+    Initialize_Motors();
+    Initialize_IMU();
+    Gyro_Bias_Calibration();
+}
+void loop()
+{
+    Pitch_And_Roll_Calculation();
+    PID_calculation_Motor_move();
+    arduinoB.print("R:");
+    arduinoB.println(Roll_target_velocity);
+    Serial.print(millis());
+    Serial.print(",");
+    Serial.print(roll, 4);
+    Serial.print(",");
+    Serial.print(Roll_target_velocity, 4);
+    Serial.print(",");
+    Serial.println(pitch, 4);
+    delay(10);
+}
+```
 </code></pre></div></td></tr></table></div>
-<h3 id="secondary-arduino-nano">Secondary (Arduino NANO)</h3>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-3-10">10</a></span>
-<span class="normal"><a href="#__codelineno-3-11">11</a></span>
-<span class="normal"><a href="#__codelineno-3-12">12</a></span>
-<span class="normal"><a href="#__codelineno-3-13">13</a></span>
-<span class="normal"><a href="#__codelineno-3-14">14</a></span>
-<span class="normal"><a href="#__codelineno-3-15">15</a></span>
-<span class="normal"><a href="#__codelineno-3-16">16</a></span>
-<span class="normal"><a href="#__codelineno-3-17">17</a></span>
-<span class="normal"><a href="#__codelineno-3-18">18</a></span>
-<span class="normal"><a href="#__codelineno-3-19">19</a></span>
-<span class="normal"><a href="#__codelineno-3-20">20</a></span>
-<span class="normal"><a href="#__codelineno-3-21">21</a></span>
-<span class="normal"><a href="#__codelineno-3-22">22</a></span>
-<span class="normal"><a href="#__codelineno-3-23">23</a></span>
-<span class="normal"><a href="#__codelineno-3-24">24</a></span>
-<span class="normal"><a href="#__codelineno-3-25">25</a></span>
-<span class="normal"><a href="#__codelineno-3-26">26</a></span>
-<span class="normal"><a href="#__codelineno-3-27">27</a></span>
-<span class="normal"><a href="#__codelineno-3-28">28</a></span>
-<span class="normal"><a href="#__codelineno-3-29">29</a></span>
-<span class="normal"><a href="#__codelineno-3-30">30</a></span>
-<span class="normal"><a href="#__codelineno-3-31">31</a></span>
-<span class="normal"><a href="#__codelineno-3-32">32</a></span>
-<span class="normal"><a href="#__codelineno-3-33">33</a></span>
-<span class="normal"><a href="#__codelineno-3-34">34</a></span>
-<span class="normal"><a href="#__codelineno-3-35">35</a></span>
-<span class="normal"><a href="#__codelineno-3-36">36</a></span>
-<span class="normal"><a href="#__codelineno-3-37">37</a></span>
-<span class="normal"><a href="#__codelineno-3-38">38</a></span>
-<span class="normal"><a href="#__codelineno-3-39">39</a></span>
-<span class="normal"><a href="#__codelineno-3-40">40</a></span>
-<span class="normal"><a href="#__codelineno-3-41">41</a></span>
-<span class="normal"><a href="#__codelineno-3-42">42</a></span>
-<span class="normal"><a href="#__codelineno-3-43">43</a></span>
-<span class="normal"><a href="#__codelineno-3-44">44</a></span>
-<span class="normal"><a href="#__codelineno-3-45">45</a></span>
-<span class="normal"><a href="#__codelineno-3-46">46</a></span>
-<span class="normal"><a href="#__codelineno-3-47">47</a></span>
-<span class="normal"><a href="#__codelineno-3-48">48</a></span>
-<span class="normal"><a href="#__codelineno-3-49">49</a></span>
-<span class="normal"><a href="#__codelineno-3-50">50</a></span>
-<span class="normal"><a href="#__codelineno-3-51">51</a></span>
-<span class="normal"><a href="#__codelineno-3-52">52</a></span>
-<span class="normal"><a href="#__codelineno-3-53">53</a></span>
-<span class="normal"><a href="#__codelineno-3-54">54</a></span>
-<span class="normal"><a href="#__codelineno-3-55">55</a></span>
-<span class="normal"><a href="#__codelineno-3-56">56</a></span>
-<span class="normal"><a href="#__codelineno-3-57">57</a></span>
-<span class="normal"><a href="#__codelineno-3-58">58</a></span>
-<span class="normal"><a href="#__codelineno-3-59">59</a></span>
-<span class="normal"><a href="#__codelineno-3-60">60</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Arduino.h&gt;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;MPU6050.h&gt;</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SoftwareSerial.h&gt;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"Roll_init.h"</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"myPID.h"</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SimpleFOC.h&gt;</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9"></a>
-<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="c1">// --------- UART Configuration ---------- //</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="n">SoftwareSerial</span><span class="w"> </span><span class="nf">fromA</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">);</span><span class="w"> </span><span class="c1">// Rx,Tx pins</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12"></a>
-<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="c1">// --- Velocity Variable Configuration --- //</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="kt">float</span><span class="w"> </span><span class="n">target_roll_velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15"></a>
-<a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Initialize_Drivers</span><span class="p">()</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="p">{</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">    </span><span class="n">ROLL_driver</span><span class="p">.</span><span class="n">voltage_power_supply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">    </span><span class="n">ROLL_driver</span><span class="p">.</span><span class="n">init</span><span class="p">();</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="p">}</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Linking_Drivers_And_Encoders_To_Motors</span><span class="p">()</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="p">{</span>
-<a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="w">    </span><span class="n">ROLL_motor</span><span class="p">.</span><span class="n">linkDriver</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ROLL_driver</span><span class="p">);</span>
-<a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="p">}</span>
-<a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Setting_Motors_Modes</span><span class="p">()</span>
-<a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="p">{</span>
-<a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="w">    </span><span class="n">ROLL_motor</span><span class="p">.</span><span class="n">controller</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">MotionControlType</span><span class="o">::</span><span class="n">velocity_openloop</span><span class="p">;</span>
-<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="p">}</span>
-<a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Initialize_Motors</span><span class="p">()</span>
-<a id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="p">{</span>
-<a id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="w">    </span><span class="n">ROLL_motor</span><span class="p">.</span><span class="n">init</span><span class="p">();</span>
-<a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="w">    </span><span class="n">ROLL_motor</span><span class="p">.</span><span class="n">initFOC</span><span class="p">();</span>
-<a id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="p">}</span>
-<a id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Communication</span><span class="p">(){</span>
-<a id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fromA</span><span class="p">.</span><span class="n">available</span><span class="p">())</span>
-<a id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-3-37" name="__codelineno-3-37"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fromA</span><span class="p">.</span><span class="n">readStringUntil</span><span class="p">(</span><span class="sc">'\n'</span><span class="p">);</span>
-<a id="__codelineno-3-38" name="__codelineno-3-38"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">startsWith</span><span class="p">(</span><span class="s">"R:"</span><span class="p">))</span>
-<a id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="w">        </span><span class="p">{</span>
-<a id="__codelineno-3-40" name="__codelineno-3-40"></a><span class="w">            </span><span class="n">target_roll_velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">toFloat</span><span class="p">();</span>
-<a id="__codelineno-3-41" name="__codelineno-3-41"></a><span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">millis</span><span class="p">());</span>
-<a id="__codelineno-3-42" name="__codelineno-3-42"></a><span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">","</span><span class="p">);</span>
-<a id="__codelineno-3-43" name="__codelineno-3-43"></a><span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">target_roll_velocity</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
-<a id="__codelineno-3-44" name="__codelineno-3-44"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-3-45" name="__codelineno-3-45"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-3-46" name="__codelineno-3-46"></a><span class="p">}</span>
-<a id="__codelineno-3-47" name="__codelineno-3-47"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
-<a id="__codelineno-3-48" name="__codelineno-3-48"></a><span class="p">{</span>
-<a id="__codelineno-3-49" name="__codelineno-3-49"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
-<a id="__codelineno-3-50" name="__codelineno-3-50"></a><span class="w">    </span><span class="n">fromA</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
-<a id="__codelineno-3-51" name="__codelineno-3-51"></a><span class="w">    </span><span class="n">Initialize_Drivers</span><span class="p">();</span>
-<a id="__codelineno-3-52" name="__codelineno-3-52"></a><span class="w">    </span><span class="n">Linking_Drivers_And_Encoders_To_Motors</span><span class="p">();</span>
-<a id="__codelineno-3-53" name="__codelineno-3-53"></a><span class="w">    </span><span class="n">Setting_Motors_Modes</span><span class="p">();</span>
-<a id="__codelineno-3-54" name="__codelineno-3-54"></a><span class="w">    </span><span class="n">Initialize_Motors</span><span class="p">();</span>
-<a id="__codelineno-3-55" name="__codelineno-3-55"></a><span class="p">}</span>
-<a id="__codelineno-3-56" name="__codelineno-3-56"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span>
-<a id="__codelineno-3-57" name="__codelineno-3-57"></a><span class="p">{</span>
-<a id="__codelineno-3-58" name="__codelineno-3-58"></a><span class="w">    </span><span class="n">Communication</span><span class="p">();</span>
-<a id="__codelineno-3-59" name="__codelineno-3-59"></a><span class="w">    </span><span class="n">ROLL_motor</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">target_roll_velocity</span><span class="p">);</span>
-<a id="__codelineno-3-60" name="__codelineno-3-60"></a><span class="p">}</span>
+<h3 id="slave_1">Slave</h3>
+<ul>
+<li>Arduino NANO</li>
+</ul>
+<details class="code">
+<summary>Slave code</summary>
+</details>
+<p>```cpp</p>
+<h1 id="include_6">include <arduino.h></arduino.h></h1>
+<h1 id="include_7">include <mpu6050.h></mpu6050.h></h1>
+<h1 id="include_8">include <softwareserial.h></softwareserial.h></h1>
+<h1 id="include_9">include <wire.h></wire.h></h1>
+<h1 id="include_10">include <math.h></math.h></h1>
+<h1 id="include-roll_inith_1">include "Roll_init.h"</h1>
+<h1 id="include-mypidh_1">include "myPID.h"</h1>
+<h1 id="include_11">include <simplefoc.h></simplefoc.h></h1>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code>// --------- UART Configuration ---------- //
+SoftwareSerial fromA(5, 6); // Rx,Tx pins
+
+// --- Velocity Variable Configuration --- //
+float target_roll_velocity = 0;
+
+void Initialize_Drivers()
+{
+    ROLL_driver.voltage_power_supply = 12;
+    ROLL_driver.init();
+}
+void Linking_Drivers_And_Encoders_To_Motors()
+{
+    ROLL_motor.linkDriver(&amp;ROLL_driver);
+}
+void Setting_Motors_Modes()
+{
+    ROLL_motor.controller  = MotionControlType::velocity_openloop;
+}
+void Initialize_Motors()
+{
+    ROLL_motor.init();
+    ROLL_motor.initFOC();
+}
+void Communication(){
+        if (fromA.available())
+    {
+        String data = fromA.readStringUntil('\n');
+        if (data.startsWith("R:"))
+        {
+            target_roll_velocity = data.substring(2).toFloat();
+            Serial.print(millis());
+            Serial.print(",");
+            Serial.println(target_roll_velocity, 4);
+        }
+    }
+}
+void setup()
+{
+    Serial.begin(115200);
+    fromA.begin(115200);
+    Initialize_Drivers();
+    Linking_Drivers_And_Encoders_To_Motors();
+    Setting_Motors_Modes();
+    Initialize_Motors();
+}
+void loop()
+{
+    Communication();
+    ROLL_motor.move(target_roll_velocity);
+}
+```
 </code></pre></div></td></tr></table></div></div>
 
 
@@ -979,6 +997,9 @@
 
 
 
+
+  
+  
 
 
 
@@ -1027,7 +1048,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "navigation.top", "navigation.tabs", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "navigation.top", "navigation.tabs", "navigation.sections", "navigation.expand", "admonition", "pymdownx.details", "pymdownx.superfences", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>

@@ -22,7 +22,7 @@
     
     
       
-        <title>GM3506 Brushless motor using SimpleFOC mini v1.0 driver and AS5048A encoder - Guy's Blog</title>
+        <title>Motors - Guy's Blog</title>
       
     
     
@@ -65,7 +65,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="blue">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              GM3506 Brushless motor using SimpleFOC mini v1.0 driver and AS5048A encoder
+              Motors
             
           </span>
         </div>
@@ -379,6 +379,22 @@
                 
                   
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <span class="md-tag">Code</span>
+      
+    
+      
+      
+      
+        <span class="md-tag">Motors</span>
+      
+    
+  </nav>
+
 
   
   
@@ -387,6 +403,9 @@
 <div><h1 id="gm3506-brushless-motor-using-simplefoc-mini-v10-driver-and-as5048a-encoder">GM3506 Brushless motor using SimpleFOC mini v1.0 driver and AS5048A encoder</h1>
 <p>Before implementing any gyroscopic control, it was important to first understand how to operate the GM3506 brushless motor using the SimpleFOC Mini v1.0 driver. This stage focused on getting the motor to spin reliably in both directions, tuning basic motion parameters, and verifying correct feedback from the magnetic encoder. Establishing this foundation ensured stable motor performance, which is critical for accurate and responsive gimbal control later on.</p>
 <h2 id="1-encoder-motor-velocity-open-loop-operation">1. Encoder + motor velocity open-loop operation</h2>
+<details class="code">
+<summary>Encoder + motor velocity open-loop operation code</summary>
+</details>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
@@ -484,6 +503,9 @@
 <a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="2-encoder-motor-positionangle-motion-control">2. Encoder + motor position/angle motion control</h2>
+<details class="code">
+<summary>Encoder + motor position/angle motion control code</summary>
+</details>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">  1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">  2</a></span>
 <span class="normal"><a href="#__codelineno-1-3">  3</a></span>
@@ -623,83 +645,83 @@
 <a id="__codelineno-1-29" name="__codelineno-1-29"></a>
 <a id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-31" name="__codelineno-1-31"></a>
-<a id="__codelineno-1-32" name="__codelineno-1-32"></a><span class="w"> </span><span class="c1">// use monitoring with serial</span>
-<a id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
-<a id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="w"> </span><span class="c1">// enable more verbose output for debugging</span>
-<a id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="w"> </span><span class="c1">// comment out if not needed</span>
-<a id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="w"> </span><span class="n">SimpleFOCDebug</span><span class="o">::</span><span class="n">enable</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Serial</span><span class="p">);</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32"></a><span class="c1">// use monitoring with serial</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="c1">// enable more verbose output for debugging</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="c1">// comment out if not needed</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="n">SimpleFOCDebug</span><span class="o">::</span><span class="n">enable</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Serial</span><span class="p">);</span>
 <a id="__codelineno-1-37" name="__codelineno-1-37"></a>
-<a id="__codelineno-1-38" name="__codelineno-1-38"></a><span class="w"> </span><span class="c1">// initialise magnetic sensor hardware</span>
-<a id="__codelineno-1-39" name="__codelineno-1-39"></a><span class="w"> </span><span class="n">sensor</span><span class="p">.</span><span class="n">init</span><span class="p">();</span>
-<a id="__codelineno-1-40" name="__codelineno-1-40"></a><span class="w"> </span><span class="c1">// link the motor to the sensor</span>
-<a id="__codelineno-1-41" name="__codelineno-1-41"></a><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">linkSensor</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sensor</span><span class="p">);</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38"></a><span class="c1">// initialise magnetic sensor hardware</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39"></a><span class="n">sensor</span><span class="p">.</span><span class="n">init</span><span class="p">();</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40"></a><span class="c1">// link the motor to the sensor</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41"></a><span class="n">motor</span><span class="p">.</span><span class="n">linkSensor</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sensor</span><span class="p">);</span>
 <a id="__codelineno-1-42" name="__codelineno-1-42"></a>
-<a id="__codelineno-1-43" name="__codelineno-1-43"></a><span class="w"> </span><span class="c1">// driver config</span>
-<a id="__codelineno-1-44" name="__codelineno-1-44"></a><span class="w"> </span><span class="c1">// power supply voltage [V]</span>
-<a id="__codelineno-1-45" name="__codelineno-1-45"></a><span class="w"> </span><span class="n">driver</span><span class="p">.</span><span class="n">voltage_power_supply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span>
-<a id="__codelineno-1-46" name="__codelineno-1-46"></a><span class="w"> </span><span class="n">driver</span><span class="p">.</span><span class="n">init</span><span class="p">();</span>
-<a id="__codelineno-1-47" name="__codelineno-1-47"></a><span class="w"> </span><span class="c1">// link the motor and the driver</span>
-<a id="__codelineno-1-48" name="__codelineno-1-48"></a><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">linkDriver</span><span class="p">(</span><span class="o">&amp;</span><span class="n">driver</span><span class="p">);</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43"></a><span class="c1">// driver config</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44"></a><span class="c1">// power supply voltage [V]</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45"></a><span class="n">driver</span><span class="p">.</span><span class="n">voltage_power_supply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46"></a><span class="n">driver</span><span class="p">.</span><span class="n">init</span><span class="p">();</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47"></a><span class="c1">// link the motor and the driver</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48"></a><span class="n">motor</span><span class="p">.</span><span class="n">linkDriver</span><span class="p">(</span><span class="o">&amp;</span><span class="n">driver</span><span class="p">);</span>
 <a id="__codelineno-1-49" name="__codelineno-1-49"></a>
-<a id="__codelineno-1-50" name="__codelineno-1-50"></a><span class="w"> </span><span class="c1">// choose FOC modulation (optional)</span>
-<a id="__codelineno-1-51" name="__codelineno-1-51"></a><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">foc_modulation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FOCModulationType</span><span class="o">::</span><span class="n">SpaceVectorPWM</span><span class="p">;</span>
+<a id="__codelineno-1-50" name="__codelineno-1-50"></a><span class="c1">// choose FOC modulation (optional)</span>
+<a id="__codelineno-1-51" name="__codelineno-1-51"></a><span class="n">motor</span><span class="p">.</span><span class="n">foc_modulation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FOCModulationType</span><span class="o">::</span><span class="n">SpaceVectorPWM</span><span class="p">;</span>
 <a id="__codelineno-1-52" name="__codelineno-1-52"></a>
-<a id="__codelineno-1-53" name="__codelineno-1-53"></a><span class="w"> </span><span class="c1">// set motion control loop to be used</span>
-<a id="__codelineno-1-54" name="__codelineno-1-54"></a><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MotionControlType</span><span class="o">::</span><span class="n">angle</span><span class="p">;</span>
+<a id="__codelineno-1-53" name="__codelineno-1-53"></a><span class="c1">// set motion control loop to be used</span>
+<a id="__codelineno-1-54" name="__codelineno-1-54"></a><span class="n">motor</span><span class="p">.</span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MotionControlType</span><span class="o">::</span><span class="n">angle</span><span class="p">;</span>
 <a id="__codelineno-1-55" name="__codelineno-1-55"></a>
-<a id="__codelineno-1-56" name="__codelineno-1-56"></a><span class="w"> </span><span class="c1">// contoller configuration</span>
-<a id="__codelineno-1-57" name="__codelineno-1-57"></a><span class="w"> </span><span class="c1">// default parameters in defaults.h</span>
+<a id="__codelineno-1-56" name="__codelineno-1-56"></a><span class="c1">// contoller configuration</span>
+<a id="__codelineno-1-57" name="__codelineno-1-57"></a><span class="c1">// default parameters in defaults.h</span>
 <a id="__codelineno-1-58" name="__codelineno-1-58"></a>
-<a id="__codelineno-1-59" name="__codelineno-1-59"></a><span class="w"> </span><span class="c1">// velocity PI controller parameters</span>
-<a id="__codelineno-1-60" name="__codelineno-1-60"></a><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">PID_velocity</span><span class="p">.</span><span class="n">P</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span>
-<a id="__codelineno-1-61" name="__codelineno-1-61"></a><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">PID_velocity</span><span class="p">.</span><span class="n">I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
-<a id="__codelineno-1-62" name="__codelineno-1-62"></a><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">PID_velocity</span><span class="p">.</span><span class="n">D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.001</span><span class="p">;</span>
-<a id="__codelineno-1-63" name="__codelineno-1-63"></a><span class="w"> </span><span class="c1">// maximal voltage to be set to the motor</span>
-<a id="__codelineno-1-64" name="__codelineno-1-64"></a><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">voltage_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+<a id="__codelineno-1-59" name="__codelineno-1-59"></a><span class="c1">// velocity PI controller parameters</span>
+<a id="__codelineno-1-60" name="__codelineno-1-60"></a><span class="n">motor</span><span class="p">.</span><span class="n">PID_velocity</span><span class="p">.</span><span class="n">P</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span>
+<a id="__codelineno-1-61" name="__codelineno-1-61"></a><span class="n">motor</span><span class="p">.</span><span class="n">PID_velocity</span><span class="p">.</span><span class="n">I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<a id="__codelineno-1-62" name="__codelineno-1-62"></a><span class="n">motor</span><span class="p">.</span><span class="n">PID_velocity</span><span class="p">.</span><span class="n">D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.001</span><span class="p">;</span>
+<a id="__codelineno-1-63" name="__codelineno-1-63"></a><span class="c1">// maximal voltage to be set to the motor</span>
+<a id="__codelineno-1-64" name="__codelineno-1-64"></a><span class="n">motor</span><span class="p">.</span><span class="n">voltage_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
 <a id="__codelineno-1-65" name="__codelineno-1-65"></a>
-<a id="__codelineno-1-66" name="__codelineno-1-66"></a><span class="w"> </span><span class="c1">// velocity low pass filtering time constant</span>
-<a id="__codelineno-1-67" name="__codelineno-1-67"></a><span class="w"> </span><span class="c1">// the lower the less filtered</span>
-<a id="__codelineno-1-68" name="__codelineno-1-68"></a><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">LPF_velocity</span><span class="p">.</span><span class="n">Tf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
+<a id="__codelineno-1-66" name="__codelineno-1-66"></a><span class="c1">// velocity low pass filtering time constant</span>
+<a id="__codelineno-1-67" name="__codelineno-1-67"></a><span class="c1">// the lower the less filtered</span>
+<a id="__codelineno-1-68" name="__codelineno-1-68"></a><span class="n">motor</span><span class="p">.</span><span class="n">LPF_velocity</span><span class="p">.</span><span class="n">Tf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
 <a id="__codelineno-1-69" name="__codelineno-1-69"></a>
-<a id="__codelineno-1-70" name="__codelineno-1-70"></a><span class="w"> </span><span class="c1">// angle P controller</span>
-<a id="__codelineno-1-71" name="__codelineno-1-71"></a><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">P_angle</span><span class="p">.</span><span class="n">P</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
-<a id="__codelineno-1-72" name="__codelineno-1-72"></a><span class="w"> </span><span class="c1">// maximal velocity of the position control</span>
-<a id="__codelineno-1-73" name="__codelineno-1-73"></a><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">velocity_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<a id="__codelineno-1-70" name="__codelineno-1-70"></a><span class="c1">// angle P controller</span>
+<a id="__codelineno-1-71" name="__codelineno-1-71"></a><span class="n">motor</span><span class="p">.</span><span class="n">P_angle</span><span class="p">.</span><span class="n">P</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<a id="__codelineno-1-72" name="__codelineno-1-72"></a><span class="c1">// maximal velocity of the position control</span>
+<a id="__codelineno-1-73" name="__codelineno-1-73"></a><span class="n">motor</span><span class="p">.</span><span class="n">velocity_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
 <a id="__codelineno-1-74" name="__codelineno-1-74"></a><span class="w">  </span><span class="c1">// comment out if not needed</span>
-<a id="__codelineno-1-75" name="__codelineno-1-75"></a><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">useMonitoring</span><span class="p">(</span><span class="n">Serial</span><span class="p">);</span>
+<a id="__codelineno-1-75" name="__codelineno-1-75"></a><span class="n">motor</span><span class="p">.</span><span class="n">useMonitoring</span><span class="p">(</span><span class="n">Serial</span><span class="p">);</span>
 <a id="__codelineno-1-76" name="__codelineno-1-76"></a>
-<a id="__codelineno-1-77" name="__codelineno-1-77"></a><span class="w"> </span><span class="c1">// initialize motor</span>
-<a id="__codelineno-1-78" name="__codelineno-1-78"></a><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">init</span><span class="p">();</span>
-<a id="__codelineno-1-79" name="__codelineno-1-79"></a><span class="w"> </span><span class="c1">// align sensor and start FOC</span>
-<a id="__codelineno-1-80" name="__codelineno-1-80"></a><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">initFOC</span><span class="p">();</span>
+<a id="__codelineno-1-77" name="__codelineno-1-77"></a><span class="c1">// initialize motor</span>
+<a id="__codelineno-1-78" name="__codelineno-1-78"></a><span class="n">motor</span><span class="p">.</span><span class="n">init</span><span class="p">();</span>
+<a id="__codelineno-1-79" name="__codelineno-1-79"></a><span class="c1">// align sensor and start FOC</span>
+<a id="__codelineno-1-80" name="__codelineno-1-80"></a><span class="n">motor</span><span class="p">.</span><span class="n">initFOC</span><span class="p">();</span>
 <a id="__codelineno-1-81" name="__codelineno-1-81"></a>
-<a id="__codelineno-1-82" name="__codelineno-1-82"></a><span class="w"> </span><span class="c1">// add target command T</span>
-<a id="__codelineno-1-83" name="__codelineno-1-83"></a><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="sc">'T'</span><span class="p">,</span><span class="w"> </span><span class="n">doTarget</span><span class="p">,</span><span class="w"> </span><span class="s">"target angle"</span><span class="p">);</span>
+<a id="__codelineno-1-82" name="__codelineno-1-82"></a><span class="c1">// add target command T</span>
+<a id="__codelineno-1-83" name="__codelineno-1-83"></a><span class="n">command</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="sc">'T'</span><span class="p">,</span><span class="w"> </span><span class="n">doTarget</span><span class="p">,</span><span class="w"> </span><span class="s">"target angle"</span><span class="p">);</span>
 <a id="__codelineno-1-84" name="__codelineno-1-84"></a>
-<a id="__codelineno-1-85" name="__codelineno-1-85"></a><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"Motor ready."</span><span class="p">));</span>
-<a id="__codelineno-1-86" name="__codelineno-1-86"></a><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"Set the target angle using serial terminal:"</span><span class="p">));</span>
+<a id="__codelineno-1-85" name="__codelineno-1-85"></a><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"Motor ready."</span><span class="p">));</span>
+<a id="__codelineno-1-86" name="__codelineno-1-86"></a><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"Set the target angle using serial terminal:"</span><span class="p">));</span>
 <a id="__codelineno-1-87" name="__codelineno-1-87"></a><span class="p">}</span>
 <a id="__codelineno-1-88" name="__codelineno-1-88"></a>
 <a id="__codelineno-1-89" name="__codelineno-1-89"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-90" name="__codelineno-1-90"></a>
-<a id="__codelineno-1-91" name="__codelineno-1-91"></a><span class="w"> </span><span class="c1">// main FOC algorithm function</span>
-<a id="__codelineno-1-92" name="__codelineno-1-92"></a><span class="w"> </span><span class="c1">// the faster you run this function the better</span>
-<a id="__codelineno-1-93" name="__codelineno-1-93"></a><span class="w"> </span><span class="c1">// Arduino UNO loop  ~1kHz</span>
-<a id="__codelineno-1-94" name="__codelineno-1-94"></a><span class="w"> </span><span class="c1">// Bluepill loop ~10kHz</span>
-<a id="__codelineno-1-95" name="__codelineno-1-95"></a><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">loopFOC</span><span class="p">();</span>
+<a id="__codelineno-1-91" name="__codelineno-1-91"></a><span class="c1">// main FOC algorithm function</span>
+<a id="__codelineno-1-92" name="__codelineno-1-92"></a><span class="c1">// the faster you run this function the better</span>
+<a id="__codelineno-1-93" name="__codelineno-1-93"></a><span class="c1">// Arduino UNO loop  ~1kHz</span>
+<a id="__codelineno-1-94" name="__codelineno-1-94"></a><span class="c1">// Bluepill loop ~10kHz</span>
+<a id="__codelineno-1-95" name="__codelineno-1-95"></a><span class="n">motor</span><span class="p">.</span><span class="n">loopFOC</span><span class="p">();</span>
 <a id="__codelineno-1-96" name="__codelineno-1-96"></a>
-<a id="__codelineno-1-97" name="__codelineno-1-97"></a><span class="w"> </span><span class="c1">// Motion control function</span>
-<a id="__codelineno-1-98" name="__codelineno-1-98"></a><span class="w"> </span><span class="c1">// velocity, position or voltage (defined in motor.controller)</span>
-<a id="__codelineno-1-99" name="__codelineno-1-99"></a><span class="w"> </span><span class="c1">// this function can be run at much lower frequency than loopFOC() function</span>
-<a id="__codelineno-1-100" name="__codelineno-1-100"></a><span class="w"> </span><span class="c1">// You can also use motor.move() and set the motor.target in the code</span>
-<a id="__codelineno-1-101" name="__codelineno-1-101"></a><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">target_angle</span><span class="p">);</span>
+<a id="__codelineno-1-97" name="__codelineno-1-97"></a><span class="c1">// Motion control function</span>
+<a id="__codelineno-1-98" name="__codelineno-1-98"></a><span class="c1">// velocity, position or voltage (defined in motor.controller)</span>
+<a id="__codelineno-1-99" name="__codelineno-1-99"></a><span class="c1">// this function can be run at much lower frequency than loopFOC() function</span>
+<a id="__codelineno-1-100" name="__codelineno-1-100"></a><span class="c1">// You can also use motor.move() and set the motor.target in the code</span>
+<a id="__codelineno-1-101" name="__codelineno-1-101"></a><span class="n">motor</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">target_angle</span><span class="p">);</span>
 <a id="__codelineno-1-102" name="__codelineno-1-102"></a>
-<a id="__codelineno-1-103" name="__codelineno-1-103"></a><span class="w"> </span><span class="c1">// function intended to be used with serial plotter to monitor motor variables</span>
-<a id="__codelineno-1-104" name="__codelineno-1-104"></a><span class="w"> </span><span class="c1">// significantly slowing the execution down!!!!</span>
-<a id="__codelineno-1-105" name="__codelineno-1-105"></a><span class="w"> </span><span class="c1">// motor.monitor();</span>
+<a id="__codelineno-1-103" name="__codelineno-1-103"></a><span class="c1">// function intended to be used with serial plotter to monitor motor variables</span>
+<a id="__codelineno-1-104" name="__codelineno-1-104"></a><span class="c1">// significantly slowing the execution down!!!!</span>
+<a id="__codelineno-1-105" name="__codelineno-1-105"></a><span class="c1">// motor.monitor();</span>
 <a id="__codelineno-1-106" name="__codelineno-1-106"></a>
-<a id="__codelineno-1-107" name="__codelineno-1-107"></a><span class="w"> </span><span class="c1">// user communication</span>
-<a id="__codelineno-1-108" name="__codelineno-1-108"></a><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">run</span><span class="p">();</span>
+<a id="__codelineno-1-107" name="__codelineno-1-107"></a><span class="c1">// user communication</span>
+<a id="__codelineno-1-108" name="__codelineno-1-108"></a><span class="n">command</span><span class="p">.</span><span class="n">run</span><span class="p">();</span>
 <a id="__codelineno-1-109" name="__codelineno-1-109"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div></div>
 
@@ -708,6 +730,9 @@
 
 
 
+
+  
+  
 
 
 
@@ -756,7 +781,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "navigation.top", "navigation.tabs", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "navigation.top", "navigation.tabs", "navigation.sections", "navigation.expand", "admonition", "pymdownx.details", "pymdownx.superfences", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
