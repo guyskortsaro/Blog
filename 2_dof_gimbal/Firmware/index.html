@@ -359,7 +359,7 @@
 
 
 <div><h1 id="firmware">Firmware</h1>
-<p>This section presents the firmware development process in a step-by-step format. It begins with basic motor control (Step 1) and MPU6050 sensor readings (Step 2), followed by an initial integration test combining a single motor with the MPU6050 (Step 3). From there, it progresses to a working one-axis (pitch) gyro system (Step 4), and finally to a full two-axis setup with pitch and roll stabilization (Step 5). Each step includes the relevant code and explanations to support learning and implementation.</p>
+<p>This section presents the firmware development process in a step-by-step format. It begins with basic motor control (Step 1) and MPU6050 sensor readings (Step 2), followed by an initial integration test combining a single motor with the MPU6050 (Step 3). From there, it progresses to a working one-axis gyro system (Step 4), to a full two-axis setup with pitch and roll stabilization (Step 5), and finally two-axis gimbal using UART in order to have 2 different arduinos controlling the system (Step 6). Each step includes the relevant code and explanations to support learning and implementation.</p>
 <div class="grid-container">
     <div class="grid-item">
         <a href="Motors">
@@ -385,6 +385,11 @@
         <a href="twoaxis_gyro">
         <img src="images/twoaxis_gyro.png">
         <p>5. Two Axis Gyro (Pitch and Roll)</p></a>
+    </div>
+        <div class="grid-item">
+        <a href="twoaxis_gyro_2boards">
+        <img src="images/twoaxis_gyro_2boards.png">
+        <p>6. Two Axis Gyro (2 Arduinos using UART)</p></a>
     </div>
 </div></div>
 
